@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+
+src
+
+.env
+.env.development
+
+.idea

@@ -1,0 +1,27 @@
+{
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "react-hooks",
+    "jsx-a11y"
+  ],
+  "rules": {
+    "react/prop-types": 0,
+    "no-console": 0,
+    "comma-dangle": [2, "never"],
+    "no-loop-func": 1,
+    "no-sparse-arrays": 1,
+    "max-len": [2, 120, 2, {
+      "ignoreUrls": true,
+      "ignoreComments": true
+    }]
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ]
+}
