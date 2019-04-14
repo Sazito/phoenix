@@ -1,7 +1,26 @@
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const isProduction = process.env.NODE_ENV === 'production';
+const dotenvPath = isProduction ? './.env' : './.env.development';
+try {
+  if (fs.existsSync(path.resolve(__dirname, dotenvPath))) {
+    console.log(`${dotenvPath} loaded`)
+  } else {
+    console.error('');
+    console.error(`${dotenvPath} does not exist`);
+    console.error(`Please make a copy from .env.example and set the correct data`);
+    console.error('');
+    process.exit(1);
+  }
+} catch(err) {
+  console.error(err);
+  process.exit(1);
+}
 const dotenv = require('dotenv');
-const env = dotenv.config().parsed;
+const env = dotenv.config({
+  path: dotenvPath
+}).parsed;
 
 module.exports = {
   entry: './client/index.js',
