@@ -90,7 +90,6 @@ const all = (req, res) => {
           indexData
             .replace('</head>', `${styles}${scripts}</head>`)
             .replace('<div id="root"></div>', `<div id="root">${app}</div>${inlineScripts}`)
-          // .replace('</body>', `${scripts}</body>`)
         );
       });
 

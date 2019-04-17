@@ -1,7 +1,7 @@
 import env from './env';
-import endpoints from './endpoints';
+import endpoints from '../../modules/endpoints_helper';
 
-export * from './endpoints';
+export * from '../../modules/endpoints_helper';
 export {
   env,
   endpoints

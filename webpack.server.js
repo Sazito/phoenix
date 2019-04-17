@@ -18,7 +18,21 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader'
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: false,
+              presets: [
+                "@babel/preset-react"
+              ],
+              plugins: [
+                "react-loadable/babel",
+                "@babel/plugin-syntax-dynamic-import"
+              ]
+            }
+          }
+        ]
       },
       {
         test: /\.(sa|sc|c)ss$/,

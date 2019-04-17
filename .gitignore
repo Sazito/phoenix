@@ -2,7 +2,10 @@ node_modules
 dist
 build
 
-src
+src*
+!src.example
+
+.gitmodules
 
 .env
 .env.development

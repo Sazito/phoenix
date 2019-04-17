@@ -1,21 +1,9 @@
-import CONSTS from "./consts";
+export const USERS = "USERS";
+export const USER = "USER";
 
-function endpoints(key, params = {}) {
-  if (!key) {
-    console.warn('key is not exist');
-  }
+const CONSTS = {
+  [USERS]: "users",
+  [USER]: "users/:id"
+};
 
-  let routeAddress = CONSTS[key];
-
-  if (params && Object.keys(params).length) {
-    Object.keys(params).map(param => {
-      routeAddress = routeAddress.replace(`:${param}`, params[param]);
-      return param;
-    });
-  }
-
-  return routeAddress;
-}
-
-export * from './consts';
-export default endpoints;
+export default CONSTS;

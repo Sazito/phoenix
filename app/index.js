@@ -1,5 +1,5 @@
 import React from 'react';
-import RoutersComponent from '../src/routers';
+import RoutersComponent from './router';
 import '../src/assets/styles/index.scss';
 
 const App = () => {

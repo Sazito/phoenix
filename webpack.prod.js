@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const DotenvWebpack = require('dotenv-webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plugin');
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
+const RtlCssPlugin = require('rtl-css-transform-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const dotenvPath = './.env.development';
@@ -18,12 +19,15 @@ const config = {
     new ExtractCssChunks({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: "assets/[name].[contentHash].css",
-      chunkFilename: "assets/[name].[contentHash].css"
+      filename: "assets/[name]-ltr.[hash].css",
+      chunkFilename: "assets/[name]-ltr.[hash].css"
     }),
     new OptimizeCSSAssetsPlugin({}),
     new ReactLoadablePlugin({
       filename: './dist/react-loadable.json'
+    }),
+    new RtlCssPlugin({
+      filename: 'assets/[name]-rtl.[hash].css'
     })
   ],
   optimization:{
@@ -36,7 +40,7 @@ const config = {
         },
         vendors: {
           test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-          filename: 'assets/vendor.[contentHash].js',
+          filename: 'assets/vendor.[contentHash].js'
         }
       }
     }

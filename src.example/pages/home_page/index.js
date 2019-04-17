@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import Logo from '../../components/logo';
-import style from "./home.scss";
+import { pHome } from "./home.scss";
 import {getUser} from "../../redux/user/actions";
-import {env} from "../../configs";
+import { env } from "../../configs";
 
 const mapStateToProps = state => {
   return {
@@ -28,7 +28,7 @@ const HomePage = ({ onGetUser, isFetched, isLoading, user }) => {
   },[]);
 
   return(
-    <div className={style.pHome}>
+    <div className={pHome}>
       {isLoading && 'Loading ...'}
       {!isLoading && user &&
         <div>

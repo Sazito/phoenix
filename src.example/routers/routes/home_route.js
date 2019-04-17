@@ -1,10 +1,10 @@
 import Loadable from "react-loadable";
 
-const HomePage = Loadable({
+const HomeRoute = Loadable({
   loader: () => import('../../pages/home_page' /* webpackChunkName: "home" */),
   loading: () => null
 });
 
-HomePage.fetchData = require('../../pages/home_page/prefetch').default;
+HomeRoute.fetchData = require('../../pages/home_page/prefetch').default;
 
-export default HomePage;
+export default HomeRoute;

@@ -53,14 +53,24 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               cacheDirectory: path.resolve(__dirname, '.build_cache'),
+              presets: [
+                [
+                  "@babel/preset-env",
+                  {
+                    "useBuiltIns": "usage",
+                    "corejs": 3
+                  }
+                ],
+                "@babel/preset-react"
+              ],
+              plugins: [
+                "react-loadable/babel",
+                "@babel/plugin-syntax-dynamic-import"
+              ]
             }
-          }
+          },
+          'eslint-loader'
         ]
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
