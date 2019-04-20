@@ -1,7 +1,9 @@
 import React from "react";
 import {Switch} from "react-router-dom";
-import routes from '../../src/routers/routes';
 import RouteFactory from '../../modules/router_helper/route_factory';
+
+// project routes
+import routes from '../../src/routers/routes';
 
 const RoutersComponent = () => {
   return (

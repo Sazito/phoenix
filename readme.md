@@ -1,15 +1,29 @@
-Before start install packages
+#Phoenix [![MIT licenses](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+##### React applications boilerplate 
+
+A simple boilerplate that helps you make your react application with Server Side Rendering support.
+
+### getting start
+
+Make a copy of `.env.example` to `.env` for production
+and `.env.development` for development.
+
+Then you need to rename `src.example` to `src` directory.
+
+install packages
 
     yarn
 
-For start project in `development` mode run these commands
+Also you can add your application modules in `src` directory.
 
-    yarn dev
+For starting the project in `development` mode run these commands at project root.
 
-For start and simulate project in `production` mode with `webpack-dev-server` run these commands
+    yarn start:dev
 
-    yarn start
+For starting and simulating the project in `production` with `webpack-dev-server` run these commands.
 
-For start project in `production` mode on the server run these commands
+    yarn start:prod
 
-    yarn build && yarn serve
+For starting the project in `production` on the server run these commands.
+
+    yarn build && yarn start:serve

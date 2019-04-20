@@ -20,8 +20,11 @@ const createAPI = () => {
   }
 };
 
+// create API wrapper in app init
 createAPI();
 
+// we might need to recreate API after user has logged in
+// or after setting custom header or some other changes in API structure
 export { createAPI as recreateAPI };
 
 export default api;

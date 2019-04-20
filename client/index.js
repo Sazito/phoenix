@@ -9,9 +9,17 @@ import rootSaga from '../src/redux/root_saga';
 import isProduction from '../modules/utils/is_production';
 
 const root = document.querySelector('#root');
+
+// get initial state from server and use it for creating redux store
 const store = createStore({initState: window.__REDUX_STATE__ || {}});
+
+// we need to start sagas outside the Redux middleware environment
+// because of running necessary sagas for pre-fetching data for server side rendering on server app
 store.runSaga(rootSaga);
 
+// in development mode we are not using server side rendering
+// because using ReactDom.hydrate generates a different DOM from what we produced in our SSR,
+// thus react gives us a warning because of that.
 const renderMethod = isProduction ? ReactDOM.hydrate : ReactDOM.render;
 
 Loadable.preloadReady().then(() => {

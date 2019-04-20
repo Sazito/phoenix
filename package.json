@@ -38,6 +38,7 @@
     "lerna": "^3.13.2",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "rtl-css-transform-webpack-plugin": "^1.0.6",
     "sass-loader": "^7.1.0",
     "serialize-javascript": "^1.6.1",
     "style-loader": "^0.23.1",
@@ -45,13 +46,13 @@
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1",
-    "webpack-node-externals": "^1.7.2",
-    "rtl-css-transform-webpack-plugin": "^1.0.6"
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "core-js": "3",
     "dotenv": "^7.0.0",
     "isomorphic-fetch": "^2.2.1",
+    "jest": "^24.7.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-loadable": "^5.5.0",

@@ -15,13 +15,16 @@ import createStore from "../../store";
 import rootSaga from "../../src/redux/root_saga";
 
 const loadRouteDependencies = (location, store) => {
+  // get current components by matching current location against project's routes list
   const currentRoute = matchRoutes(routes, location);
   const need = currentRoute.map(({route, match}) => {
+    // check if the component exists and have the `pre-fetch` method
     if (route.component) {
       return route.component &&
       route.component &&
       route.component.fetchData ?
         route.component.fetchData({
+          // pass store and location parameters data to `pre-fetch` method
           store,
           params: match.params
         }) :
@@ -35,13 +38,21 @@ const loadRouteDependencies = (location, store) => {
 
 const all = (req, res) => {
 
+  // create store without any initial state
   const store = createStore();
+
+  // we need to start sagas outside the Redux middleware environment
+  // because of running necessary sagas for pre-fetching data for server side rendering on server app
   store.runSaga(rootSaga).toPromise().then(
+    // running pre-fetches
     loadRouteDependencies(req.originalUrl, store))
     .then(() => {
       const context = {};
       const modules = [];
+
+      // computing initial state after running sagas and passing it to client via `window`
       const initState = store.getState();
+
       const app = ReactDOMServer.renderToString(
         <Loadable.Capture report={moduleName => modules.push(moduleName)}>
           <Provider store={store}>
@@ -52,6 +63,9 @@ const all = (req, res) => {
         </Loadable.Capture>
       );
 
+      // get all bundles that are necessary for the current route
+      // `stats` is the asset-manifest of application that contains list of all bundles and chunks
+      // `modules` is list of current route's modules that detected by react loadable
       const bundles = getBundles(stats, modules);
 
       const indexFile = path.resolve('./dist/index.html');
@@ -68,6 +82,7 @@ const all = (req, res) => {
           return res.redirect(301, context.url);
         }
 
+        // separating css and js chunks
         let stylesBundles = bundles.filter(bundle => bundle.file.endsWith('.css'));
         let scriptsBundles = bundles.filter(bundle => bundle.file.endsWith('.js'));
 
@@ -86,6 +101,8 @@ const all = (req, res) => {
           inlineScripts += `<script type="text/javascript">window.__REDUX_STATE__ = ${serialize(initState)}</script>`;
         }
 
+
+        // sending prepared data, chunks and redux initial states to the client
         return res.send(
           indexData
             .replace('</head>', `${styles}${scripts}</head>`)
