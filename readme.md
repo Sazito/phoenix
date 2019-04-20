@@ -1,4 +1,4 @@
-#Phoenix [![MIT licenses](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+# Phoenix [![MIT licenses](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 ##### React applications boilerplate 
 
 A simple boilerplate that helps you make your react application with Server Side Rendering support.
