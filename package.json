@@ -1,6 +1,6 @@
 {
   "name": "phoenix",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Frontend Boilerplate",
   "main": "index.js",
   "author": "amirhossein693@gmail.com",
@@ -55,6 +55,8 @@
     "lerna": "^3.13.2",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "prettier": "^1.17.0",
+    "prettier-loader": "^2.1.1",
     "react-test-renderer": "^16.8.6",
     "rtl-css-transform-webpack-plugin": "^1.0.6",
     "sass-loader": "^7.1.0",

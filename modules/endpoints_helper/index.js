@@ -1,8 +1,8 @@
-import CONSTS from "../../src/configs/endpoints/";
+import CONSTS from "../../code/configs/endpoints/";
 
 function endpoints(key, params = {}) {
   if (!key) {
-    console.warn('key is not exist');
+    console.warn("key is not exist");
   }
 
   let routeAddress = CONSTS[key];
@@ -17,5 +17,5 @@ function endpoints(key, params = {}) {
   return routeAddress;
 }
 
-export * from '../../src/configs/endpoints/';
+export * from "../../code/configs/endpoints/";
 export default endpoints;

@@ -8,7 +8,7 @@ const PORT = process.env.PORT;
 const app = express();
 
 // adding a route for serving project static assets
-app.use(express.static('./src/public'));
+app.use(express.static('./code/public'));
 
 // handle boilerplate static assets
 app.use('/assets', assets);

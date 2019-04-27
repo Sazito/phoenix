@@ -1,15 +1,13 @@
-import React from 'react';
+import React from "react";
 
-// generates router from `src/routers/routes` with help of router_helper functions
-import RoutersComponent from './router';
+// generates router from `code/routers/routes` with help of router_helper functions
+import RoutersComponent from "./router";
 
-// you can add some global styles in `src/assets/styles/index.scss`
-import '../src/assets/styles/index.scss';
+// you can add some global styles in `code/assets/styles/index.scss`
+import "../code/assets/styles/index.scss";
 
 const App = () => {
-  return (
-    <RoutersComponent />
-  )
+  return <RoutersComponent />;
 };
 
 export default App;

@@ -8,13 +8,13 @@ A simple boilerplate that helps you make your react application with Server Side
 Make a copy of `.env.example` to `.env` for production
 and `.env.development` for development.
 
-Then you need to rename `src.example` to `src` directory.
+Then you need to rename `code.example` to `code` directory.
 
 install packages
 
     yarn
 
-Also you can add your application modules in `src` directory.
+Also you can add your application modules in `code` directory.
 
 For starting the project in `development` mode run these commands at project root.
 

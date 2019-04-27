@@ -2,8 +2,8 @@ node_modules
 dist
 build
 
-src*
-!src.example
+code*
+!code.example
 
 .gitmodules
 

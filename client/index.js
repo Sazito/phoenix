@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import Loadable from 'react-loadable';
-import App from '../app';
-import { Provider } from 'react-redux';
-import createStore from '../store';
-import rootSaga from '../src/redux/root_saga';
-import isProduction from '../modules/utils/is_production';
+import Loadable from "react-loadable";
+import App from "../app";
+import { Provider } from "react-redux";
+import createStore from "../store";
+import rootSaga from "../code/redux/root_saga";
+import isProduction from "../modules/utils/is_production";
 
-const root = document.querySelector('#root');
+const root = document.querySelector("#root");
 
 // get initial state from server and use it for creating redux store
-const store = createStore({initState: window.__REDUX_STATE__ || {}});
+const store = createStore({ initState: window.__REDUX_STATE__ || {} });
 
 // we need to start sagas outside the Redux middleware environment
 // because of running necessary sagas for pre-fetching data for server side rendering on server app
@@ -26,8 +26,9 @@ Loadable.preloadReady().then(() => {
   renderMethod(
     <Provider store={store}>
       <BrowserRouter>
-          <App />
+        <App />
       </BrowserRouter>
     </Provider>,
-    root);
+    root
+  );
 });

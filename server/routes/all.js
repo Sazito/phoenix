@@ -9,10 +9,10 @@ import Loadable from 'react-loadable';
 import { getBundles } from 'react-loadable/webpack'
 import stats from '../../dist/react-loadable.json';
 import App from "../../app";
-import routes from "../../src/routers/routes";
+import routes from "../../code/routers/routes";
 import {Provider} from "react-redux";
 import createStore from "../../store";
-import rootSaga from "../../src/redux/root_saga";
+import rootSaga from "../../code/redux/root_saga";
 
 const loadRouteDependencies = (location, store) => {
   // get current components by matching current location against project's routes list
