@@ -1,4 +1,16 @@
-# Phoenix [![MIT licenses](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+<div align="center">
+    <img width="200" src="code.example/assets/images/logo.png">
+    <h1>Phoenix</h1>
+</div>
+
+<div align="center">
+
+[![MIT licenses](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]()
+
+</div>
+
+
 ##### React applications boilerplate 
 
 A simple boilerplate that helps you make your react application with Server Side Rendering support.
@@ -27,3 +39,7 @@ For starting and simulating the project in `production` with `webpack-dev-server
 For starting the project in `production` on the server run these commands.
 
     yarn build && yarn start:serve
+
+### Links
+
+- [Change Log](CHANGELOG.md)
