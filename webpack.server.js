@@ -22,7 +22,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: false,
+              cacheDirectory: path.resolve(__dirname, './code/.build_cache'),
               presets: [
                 "@babel/preset-react"
               ],
@@ -49,7 +49,7 @@ module.exports = {
               modules: true,
               camelCase: true,
               importLoaders: true,
-              localIdentName: '[local]'
+              localIdentName: '[name]__[local]__[hash:base64:5]'
             }
           },
           // sass-loader

@@ -70,7 +70,7 @@ const config = {
               modules: true,
               camelCase: true,
               importLoaders: true,
-              localIdentName: '[local]'
+              localIdentName: '[name]__[local]__[hash:base64:5]'
             }
           },
           // sass-loader

@@ -52,7 +52,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: path.resolve(__dirname, '.build_cache'),
+              cacheDirectory: path.resolve(__dirname, './code/.build_cache'),
               presets: [
                 [
                   "@babel/preset-env",
