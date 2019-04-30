@@ -34,7 +34,6 @@ const HomePage = ({ onGetPost, isFetched, isLoading, post }) => {
         {!isLoading && post && (
           <div>
             <Logo />
-            <img src="/myimage" alt="" />
             <div>Welcome to {env.APP_NAME}</div>
             <div>{post.title}</div>
           </div>
