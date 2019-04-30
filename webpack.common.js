@@ -69,7 +69,6 @@ module.exports = {
               ]
             }
           },
-          'prettier-loader',
           'eslint-loader'
         ]
       },

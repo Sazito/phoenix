@@ -48,6 +48,11 @@ const config = {
   module: {
     rules: [
       {
+        test: /.js$/,
+        exclude: /node_modules/,
+        use: ['prettier-loader']
+      },
+      {
         test: /\.(sa|sc|c)ss$/,
         use: [
           // extract css
