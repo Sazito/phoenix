@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import { cLoading } from "./loading.scss";
 
 const Loading = () => {
-  return(
-    <div>
-      Loading ...
-    </div>
-  )
+  return <div className={cLoading} />;
 };
 
 export default Loading;

@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
+import { pDashboardProfile } from "./dashboard_profile_page.scss";
 
 const DashboardProfilePage = () => {
-  return(
-    <div>Dashboard Profile Page</div>
-  )
+  return <div className={pDashboardProfile}>Dashboard Profile Page</div>;
 };
 
 export default DashboardProfilePage;

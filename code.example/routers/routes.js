@@ -1,28 +1,31 @@
-import HomeRoute from './routes/home_route';
-import DashboardSettingsRoute from './routes/dashboard_settings_route';
-import DashboardProfileRoute from './routes/dashboard_profile_route';
-import LoginRoute from './routes/login_route';
+import HomeRoute from "./routes/home_route";
+import DashboardSettingsRoute from "./routes/dashboard_settings_route";
+import DashboardProfileRoute from "./routes/dashboard_profile_route";
+import LoginRoute from "./routes/login_route";
 
-import CleanLayout from '../layouts/clean_layout';
-import DashboardLayout from '../layouts/dashboard_layout';
+import NotFoundRoute from "./routes/not_found_route";
+
+import CleanLayout from "../layouts/clean_layout";
+import DashboardLayout from "../layouts/dashboard_layout";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     exact: true,
-    component: HomeRoute
+    component: HomeRoute,
+    layout: CleanLayout
   },
   {
-    path: '/login',
+    path: "/login",
     component: LoginRoute,
     layout: CleanLayout
   },
   {
-    path: '',
+    path: "/dashboard",
     layout: CleanLayout,
     routes: [
       {
-        path: '/dashboard',
+        path: "",
         layout: DashboardLayout,
         routes: [
           {
@@ -36,6 +39,10 @@ const routes = [
         ]
       }
     ]
+  },
+  {
+    path: "",
+    component: NotFoundRoute
   }
 ];
 

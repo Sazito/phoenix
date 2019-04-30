@@ -7,14 +7,14 @@ const initState = {
 };
 
 const handleStates = {
-  [actionTypes.ACTION_USER_GET_USER]: (state) => {
+  [actionTypes.ACTION_USERS_GET_USER]: state => {
     return {
       ...state,
       isLoading: true,
       isFetched: false
     };
   },
-  [actionTypes.ACTION_USER_GET_USER_RESULT]: (state, action) => {
+  [actionTypes.ACTION_USERS_GET_USER_RESULT]: (state, action) => {
     return {
       ...state,
       data: action.response,
@@ -26,10 +26,10 @@ const handleStates = {
 
 const reducer = (state, action) => {
   let _state = state;
-  if (typeof state === 'undefined') {
+  if (typeof state === "undefined") {
     _state = initState;
   }
-  if (typeof handleStates[action.type] === 'function') {
+  if (typeof handleStates[action.type] === "function") {
     return handleStates[action.type](_state, action);
   }
   return _state;
