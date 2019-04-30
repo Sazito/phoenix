@@ -35,7 +35,6 @@ const loadRouteDependencies = (location, store) => {
 };
 
 const all = (req, res) => {
-
   // create store without any initial state
   const store = createStore();
 
