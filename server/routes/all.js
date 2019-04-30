@@ -1,34 +1,32 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import path from 'path';
-import fs from 'fs';
+import path from "path";
+import fs from "fs";
 import serialize from "serialize-javascript";
-import {matchRoutes} from "react-router-config";
-import {StaticRouter} from "react-router-dom";
-import Loadable from 'react-loadable';
-import { getBundles } from 'react-loadable/webpack'
-import stats from '../../dist/react-loadable.json';
+import { matchRoutes } from "react-router-config";
+import { StaticRouter } from "react-router-dom";
+import Loadable from "react-loadable";
+import { getBundles } from "react-loadable/webpack";
+import stats from "../../dist/react-loadable.json";
 import App from "../../app";
 import routes from "../../code/routers/routes";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 import createStore from "../../store";
 import rootSaga from "../../code/redux/root_saga";
 
 const loadRouteDependencies = (location, store) => {
   // get current components by matching current location against project's routes list
   const currentRoute = matchRoutes(routes, location);
-  const need = currentRoute.map(({route, match}) => {
+  const need = currentRoute.map(({ route, match }) => {
     // check if the component exists and have the `pre-fetch` method
     if (route.component) {
-      return route.component &&
-      route.component &&
-      route.component.fetchData ?
-        route.component.fetchData({
-          // pass store and location parameters data to `pre-fetch` method
-          store,
-          params: match.params
-        }) :
-        Promise.resolve(null);
+      return route.component && route.component && route.component.fetchData
+        ? route.component.fetchData({
+            // pass store and location parameters data to `pre-fetch` method
+            store,
+            params: match.params
+          })
+        : Promise.resolve(null);
     }
     Promise.resolve(null);
   });
@@ -43,9 +41,13 @@ const all = (req, res) => {
 
   // we need to start sagas outside the Redux middleware environment
   // because of running necessary sagas for pre-fetching data for server side rendering on server app
-  store.runSaga(rootSaga).toPromise().then(
-    // running pre-fetches
-    loadRouteDependencies(req.originalUrl, store))
+  store
+    .runSaga(rootSaga)
+    .toPromise()
+    .then(
+      // running pre-fetches
+      loadRouteDependencies(req.originalUrl, store)
+    )
     .then(() => {
       const context = {};
       const modules = [];
@@ -57,7 +59,7 @@ const all = (req, res) => {
         <Loadable.Capture report={moduleName => modules.push(moduleName)}>
           <Provider store={store}>
             <StaticRouter location={req.url} context={context}>
-              <App/>
+              <App />
             </StaticRouter>
           </Provider>
         </Loadable.Capture>
@@ -68,11 +70,11 @@ const all = (req, res) => {
       // `modules` is list of current route's modules that detected by react loadable
       const bundles = getBundles(stats, modules);
 
-      const indexFile = path.resolve('./dist/index.html');
-      fs.readFile(indexFile, 'utf8', (err, indexData) => {
+      const indexFile = path.resolve("./dist/index.html");
+      fs.readFile(indexFile, "utf8", (err, indexData) => {
         if (err) {
-          console.error('Something went wrong:', err);
-          return res.status(500).send('Oops, better luck next time!');
+          console.error("Something went wrong:", err);
+          return res.status(500).send("Oops, better luck next time!");
         }
 
         if (context.status === 404) {
@@ -83,35 +85,42 @@ const all = (req, res) => {
         }
 
         // separating css and js chunks
-        let stylesBundles = bundles.filter(bundle => bundle.file.endsWith('.css'));
-        let scriptsBundles = bundles.filter(bundle => bundle.file.endsWith('.js'));
+        let stylesBundles = bundles.filter(bundle =>
+          bundle.file.endsWith(".css")
+        );
+        let scriptsBundles = bundles.filter(bundle =>
+          bundle.file.endsWith(".js")
+        );
 
-        let styles = '';
+        let styles = "";
         (stylesBundles || []).map(style => {
-          styles += `<link href="/${style.file}" rel="stylesheet" />`
+          styles += `<link href="/${style.file}" rel="stylesheet" />`;
         });
 
-        let scripts = '';
+        let scripts = "";
         (scriptsBundles || []).map(script => {
-          scripts += `<script charset="utf-8" src="/${script.file}"></script>`
+          scripts += `<script charset="utf-8" src="/${script.file}"></script>`;
         });
 
-        let inlineScripts = '';
+        let inlineScripts = "";
         if (initState) {
-          inlineScripts += `<script type="text/javascript">window.__REDUX_STATE__ = ${serialize(initState)}</script>`;
+          inlineScripts += `<script type="text/javascript">window.__REDUX_STATE__ = ${serialize(
+            initState
+          )}</script>`;
         }
-
 
         // sending prepared data, chunks and redux initial states to the client
         return res.send(
           indexData
-            .replace('</head>', `${styles}${scripts}</head>`)
-            .replace('<div id="root"></div>', `<div id="root">${app}</div>${inlineScripts}`)
+            .replace("</head>", `${styles}${scripts}</head>`)
+            .replace(
+              '<div id="root"></div>',
+              `<div id="root">${app}</div>${inlineScripts}`
+            )
         );
       });
-
     })
-    .catch((error) => {
+    .catch(error => {
       console.error(error);
     });
   store.close();

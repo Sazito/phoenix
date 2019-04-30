@@ -1,5 +1,5 @@
-import path from 'path';
-import fs from 'fs';
+import path from "path";
+import fs from "fs";
 
 const assets = (req, res) => {
   const file = path.resolve(`./dist${req.originalUrl}`);
