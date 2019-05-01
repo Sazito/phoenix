@@ -18,7 +18,7 @@
     "comma-dangle": [2, "never"],
     "no-loop-func": 1,
     "no-sparse-arrays": 1,
-    "max-len": [2, 120, 2, {
+    "max-len": [1, 120, 2, {
       "ignoreUrls": true,
       "ignoreComments": true
     }],

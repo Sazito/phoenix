@@ -2,11 +2,14 @@ import express from "express";
 import assets from "./routes/assets";
 import all from "./routes/all";
 import Loadable from "react-loadable";
+import cookieParser from "cookie-parser";
 import morgan from "morgan";
 
 // getting PORT from `.env` file in root directory
 const PORT = process.env.PORT;
 const app = express();
+
+app.use(cookieParser());
 
 app.use(
   morgan("tiny", {

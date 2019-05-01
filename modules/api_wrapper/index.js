@@ -18,6 +18,7 @@ const createAPI = () => {
     const method = methods[index];
     api[method] = APICreator(method);
   }
+  console.log("createApi");
 };
 
 // create API wrapper in app init

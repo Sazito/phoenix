@@ -12,7 +12,9 @@ import App from "../../app";
 import routes from "../../code/routers/routes";
 import { Provider } from "react-redux";
 import createStore from "../../store";
+import { env } from "../../code/configs";
 import rootSaga from "../../code/redux/root_saga";
+import createUser from "../../modules/user_authentication";
 
 const loadRouteDependencies = (location, store) => {
   // get current components by matching current location against project's routes list
@@ -37,6 +39,10 @@ const loadRouteDependencies = (location, store) => {
 const all = (req, res) => {
   // create store without any initial state
   const store = createStore();
+
+  const user = createUser({ token: req.cookies[env.APP_TOKEN] });
+
+  console.log(user.getToken());
 
   // we need to start sagas outside the Redux middleware environment
   // because of running necessary sagas for pre-fetching data for server side rendering on server app
