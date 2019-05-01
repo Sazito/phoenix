@@ -7,14 +7,14 @@ const initState = {
 };
 
 const handleStates = {
-  [actionTypes.ACTION_USERS_GET_USER]: state => {
+  [actionTypes.ACTION_TYPE_USERS_GET_USER]: state => {
     return {
       ...state,
       isLoading: true,
       isFetched: false
     };
   },
-  [actionTypes.ACTION_USERS_GET_USER_RESULT]: (state, action) => {
+  [actionTypes.ACTION_TYPE_USERS_GET_USER_RESULT]: (state, action) => {
     return {
       ...state,
       data: action.response,

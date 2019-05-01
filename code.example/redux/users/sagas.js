@@ -9,13 +9,13 @@ function* getUserAction() {
     .get(endpoints(USER, { id }))
     .then(response => response.json());
   yield put({
-    type: [actionTypes.ACTION_USERS_GET_USER_RESULT],
+    type: [actionTypes.ACTION_TYPE_USERS_GET_USER_RESULT],
     response: data
   });
 }
 
 const usersSaga = [
-  takeLatest([actionTypes.ACTION_USERS_GET_USER], getUserAction)
+  takeLatest([actionTypes.ACTION_TYPE_USERS_GET_USER], getUserAction)
 ];
 
 export default usersSaga;
