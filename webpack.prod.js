@@ -5,8 +5,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plug
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const RtlCssPlugin = require('rtl-css-transform-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const { ReactLoadablePlugin } = require('react-loadable/webpack');
-const dotenvPath = './.env.development';
+const {
+  ReactLoadablePlugin
+} = require('react-loadable/webpack');
+const isProduction = process.env.NODE_ENV === 'production';
+const dotenvPath = isProduction ? './.env' : './.env.development';
 
 const config = {
   mode: 'production',
@@ -30,7 +33,7 @@ const config = {
       filename: 'assets/[name]-rtl.[hash].css'
     })
   ],
-  optimization:{
+  optimization: {
     splitChunks: {
       chunks: 'all',
       automaticNameDelimiter: '-',
@@ -46,8 +49,7 @@ const config = {
     }
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /.js$/,
         exclude: /node_modules/,
         use: ['prettier-loader']
@@ -57,7 +59,7 @@ const config = {
         use: [
           // extract css
           {
-            loader:ExtractCssChunks.loader,
+            loader: ExtractCssChunks.loader,
             options: {
               hot: true,
               reloadAll: true
