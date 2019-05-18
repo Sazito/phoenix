@@ -5,6 +5,11 @@ import Loadable from "react-loadable";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 
+// handle app custom route
+import customRoutes from "../code/server_routes";
+
+import proxy from "./proxy";
+
 // getting PORT from `.env` file in root directory
 const PORT = process.env.PORT;
 const app = express();
@@ -34,6 +39,9 @@ app.use(express.static("./code/public"));
 
 // handle boilerplate static assets
 app.use("/assets", assets);
+
+app.use(customRoutes);
+app.use(proxy);
 
 // handle other routes
 app.get("/*", all);

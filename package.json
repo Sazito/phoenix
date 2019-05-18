@@ -17,7 +17,9 @@
   "dependencies": {
     "cookie-parser": "^1.4.4",
     "core-js": "3",
+    "crypto-js": "^3.1.9-1",
     "dotenv": "^7.0.0",
+    "http-proxy-middleware": "^0.19.1",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
     "morgan": "^1.9.1",

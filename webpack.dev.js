@@ -3,9 +3,19 @@ const merge = require('webpack-merge');
 const DotenvWebpack = require('dotenv-webpack');
 const dotenv = require('dotenv');
 const dotenvPath = './.env.development';
+const proxyList = require("./code/configs/proxy");
 const env = dotenv.config({
   path: dotenvPath
 }).parsed;
+
+const proxy = {};
+proxyList.map(record => {
+  proxy[record.path] = {
+    target: record.target,
+    changeOrigin: true,
+    pathRewrite: { [`^${record.path}`]: "" }
+  };
+});
 
 const config = {
   mode: 'development',
@@ -16,7 +26,8 @@ const config = {
     })
   ],
   devServer: {
-    port: env.PORT
+    port: env.PORT,
+    proxy
   },
   module: {
     rules: [

@@ -1,24 +1,43 @@
 import fetch from "isomorphic-fetch";
 import { env } from "../../code/configs";
 
+// let instance = null;
 const methods = ["post", "get", "put", "delete", "update"];
 const api = {};
 
-const APICreator = method => {
+const APICreator = ({ method, token }) => {
   return (endpoint, body) => {
-    return fetch(`${env.APP_API_BASE}${endpoint}`, {
+    const isAbsolute = endpoint.toLowerCase().startsWith("http");
+    const url = isAbsolute ? endpoint : `${env.APP_API_BASE}${endpoint}`;
+    const options = {
       method: method.toUpperCase(),
-      body: JSON.stringify(body)
-    });
+      body: JSON.stringify(body),
+      headers: {}
+    };
+
+    if (token) {
+      options.headers["authorization"] = token;
+    }
+
+    return fetch(url, options)
+      .then(response => {
+        return response.json().then(data => {
+          return {
+            status: response.status,
+            statusText: response.statusText,
+            data
+          };
+        });
+      })
+      .catch(error => error);
   };
 };
 
-const createAPI = () => {
+const createAPI = ({ token } = {}) => {
   for (let index in methods) {
     const method = methods[index];
-    api[method] = APICreator(method);
+    api[method] = APICreator({ method, token });
   }
-  console.log("createApi");
 };
 
 // create API wrapper in app init
