@@ -15,7 +15,7 @@ import createStore from "../../store";
 import { env } from "../../code/configs";
 import rootSaga from "../../code/redux/root_saga";
 import { createUser } from "../../modules/membership";
-import { recreateAPI } from "../../modules/api_wrapper";
+import { createAPI } from "../../modules/api_wrapper";
 import { checkUser } from "../../code/modules/membership";
 import CryptoJS from "crypto-js";
 
@@ -42,11 +42,8 @@ const loadRouteDependencies = (location, store) => {
 const all = (req, res) => {
   const token = req.cookies[env.APP_TOKEN];
 
-  if (token) {
-    recreateAPI({
-      token: req.cookies[env.APP_TOKEN]
-    });
-  }
+  createAPI({ token });
+
   // create store without any initial state
   const store = createStore();
   const theUser = createUser({
@@ -75,7 +72,10 @@ const all = (req, res) => {
           <Loadable.Capture report={moduleName => modules.push(moduleName)}>
             <Provider store={store}>
               <StaticRouter location={req.url} context={context}>
-                <App user={user.data} />
+                <App
+                  user={user && user.status === 200 && user.data}
+                  userActions={theUser && theUser}
+                />
               </StaticRouter>
             </Provider>
           </Loadable.Capture>

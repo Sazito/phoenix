@@ -16,7 +16,7 @@ const APICreator = ({ method, token }) => {
     };
 
     if (token) {
-      options.headers["authorization"] = token;
+      options.headers["Authorization"] = token;
     }
 
     return fetch(url, options)
@@ -38,6 +38,7 @@ const createAPI = ({ token } = {}) => {
     const method = methods[index];
     api[method] = APICreator({ method, token });
   }
+  return api;
 };
 
 // create API wrapper in app init
@@ -45,6 +46,6 @@ createAPI();
 
 // we might need to recreate API after user has logged in
 // or after setting custom header or some other changes in API structure
-export { createAPI as recreateAPI };
+export { createAPI };
 
 export default api;

@@ -8,13 +8,18 @@ import "../code/assets/styles/index.scss";
 
 import UserContext from "../modules/user_context";
 
-const App = ({ user }) => {
+const App = ({ user, userActions }) => {
   const [userData, setUserData] = useState(user);
+  const [userActionsData, setUserActionsData] = useState(userActions);
   return (
     <UserContext.Provider
       value={{
+        userActions: userActionsData,
         user: userData,
-        updateUser: data => setUserData(data)
+        updateUser: (data, actions) => {
+          setUserData(data);
+          setUserActionsData(actions);
+        }
       }}
     >
       <RoutersComponent />

@@ -4,17 +4,23 @@ import CryptoJS from "crypto-js";
 
 const createUser = ({ initContext, token, checkUser }) => {
   return {
-    getToken() {
+    getToken({ callback } = {}) {
       if (typeof window === "object") {
         return Cookies.get(env.APP_TOKEN);
       } else if (typeof token === "string") {
         return token;
       }
+      if (callback && typeof callback === "function") {
+        callback();
+      }
       return token;
     },
-    setToken() {
+    setToken({ token, callback } = {}) {
       if (typeof window === "object") {
         Cookies.set(env.APP_TOKEN, token, { expires: 7 });
+      }
+      if (callback && typeof callback === "function") {
+        callback();
       }
     },
     removeToken() {
@@ -32,26 +38,14 @@ const createUser = ({ initContext, token, checkUser }) => {
             return Promise.resolve({ data: context.user });
           } else {
             this.removeToken();
-            return null;
+            return Promise.resolve(null);
           }
         }
       } else if (!initContext && checkUser && typeof checkUser === "function") {
         return checkUser().then(response => response);
       } else {
         this.removeToken();
-        return null;
-      }
-    },
-    login(callback) {
-      this.setToken();
-      if (typeof callback === "function") {
-        callback();
-      }
-    },
-    logout(callback) {
-      this.removeToken();
-      if (typeof callback === "function") {
-        callback();
+        return Promise.resolve(null);
       }
     }
   };

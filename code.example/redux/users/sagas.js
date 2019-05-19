@@ -5,7 +5,6 @@ import api from "../../../modules/api_wrapper";
 
 function* getUserAction() {
   const id = Math.floor(Math.random() * 10) + 1;
-  console.log('api import in users', api);
   const data = yield api
     .get(endpoints(USER, { id }))
     .then(response => response.json());
