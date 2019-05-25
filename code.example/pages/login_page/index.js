@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { pLogin } from "./login_page.scss";
-import { getUser } from "../../redux/users/actions";
+import { getCurrentUser } from "../../redux/users/actions";
 import Loading from "../../components/loading";
 
 const mapStateToProps = state => {
@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onGetUser: () => {
-      return dispatch(getUser());
+      return dispatch(getCurrentUser());
     }
   };
 };
