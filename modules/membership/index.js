@@ -42,7 +42,7 @@ const createUser = ({ initContext, token, checkUser }) => {
           }
         }
       } else if (!initContext && checkUser && typeof checkUser === "function") {
-        return checkUser().then(response => response);
+        return checkUser();
       } else {
         this.removeToken();
         return Promise.resolve(null);
