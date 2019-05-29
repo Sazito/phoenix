@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import { env } from "../../code/configs";
 import CryptoJS from "crypto-js";
-import aclCheck from './acl_check';
+import aclCheck from "./acl_check";
 
 const createUser = ({ initContext, token, checkUser }) => {
   return {
