@@ -1,19 +1,24 @@
-import { getRole, getRoleConfigs } from '../../code/configs';
+import { getRole, getRoleConfigs } from "../../code/configs";
 
 const hasPermission = (permissions, roleConfigs) => {
   return permissions.find(permission => {
-    return (roleConfigs.permissions || []).indexOf(permission) >= 0
-  })
+    return (roleConfigs.permissions || []).indexOf(permission) >= 0;
+  });
 };
 
-const aclCheck = ({permissions, user}) => {
-  const roleName = getRole({user});
+const aclCheck = ({ permissions, user }) => {
+  const roleName = getRole({ user });
   const roleConfigs = getRoleConfigs(roleName);
   let hasAccess = false;
   if (!permissions || permissions.length === 0) {
     hasAccess = true;
   } else {
-    if (permissions && user && 'permissions' in roleConfigs && !!hasPermission(permissions, roleConfigs)) {
+    if (
+      permissions &&
+      user &&
+      "permissions" in roleConfigs &&
+      !!hasPermission(permissions, roleConfigs)
+    ) {
       hasAccess = true;
     } else {
       hasAccess = false;
@@ -22,7 +27,7 @@ const aclCheck = ({permissions, user}) => {
   return {
     hasAccess,
     roleConfigs
-  }
+  };
 };
 
 export default aclCheck;
