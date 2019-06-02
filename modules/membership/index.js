@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 import { env } from "../../code/configs";
 import CryptoJS from "crypto-js";
+import aclCheck from "./acl_check";
 
 const createUser = ({ initContext, token, checkUser }) => {
   return {
@@ -42,7 +43,7 @@ const createUser = ({ initContext, token, checkUser }) => {
           }
         }
       } else if (!initContext && checkUser && typeof checkUser === "function") {
-        return checkUser().then(response => response);
+        return checkUser();
       } else {
         this.removeToken();
         return Promise.resolve(null);
@@ -51,4 +52,4 @@ const createUser = ({ initContext, token, checkUser }) => {
   };
 };
 
-export { createUser };
+export { createUser, aclCheck };

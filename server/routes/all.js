@@ -74,7 +74,7 @@ const all = (req, res) => {
               <StaticRouter location={req.url} context={context}>
                 <App
                   user={user && user.status === 200 && user.data}
-                  userActions={theUser && theUser}
+                  userContext={theUser && theUser}
                 />
               </StaticRouter>
             </Provider>

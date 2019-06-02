@@ -45,7 +45,7 @@ theUser.getUser().then(user => {
     renderMethod(
       <Provider store={store}>
         <BrowserRouter>
-          <App user={user && user.data} userActions={theUser && theUser} />
+          <App user={user && user.data} userContext={theUser && theUser} />
         </BrowserRouter>
       </Provider>,
       root

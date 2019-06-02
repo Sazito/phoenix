@@ -1,7 +1,7 @@
-import { getUser } from "../../redux/users/actions";
+import { getCurrentUser } from "../../redux/users/actions";
 
 const fetchData = ({ store }) => {
-  return store.dispatch(getUser());
+  return store.dispatch(getCurrentUser());
 };
 
 export default fetchData;
