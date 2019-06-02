@@ -6,6 +6,4 @@ const LoginRoute = Loadable({
   loading: () => null
 });
 
-LoginRoute.fetchData = require("../../pages/login_page/prefetch").default;
-
 export default LoginRoute;
