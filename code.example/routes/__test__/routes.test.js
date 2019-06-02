@@ -1,4 +1,4 @@
-import routes from '../routes';
+import routes from '../index';
 
 const testRoutes = (routes) => {
   test('routes is not null or undefined', () => {
