@@ -7,7 +7,6 @@ function* getPostAction() {
   const id = Math.floor(Math.random() * 10) + 1;
   const data = yield api
     .get(endpoints(POST, { id }))
-    .then(response => response.json());
   yield put({
     type: [actionTypes.ACTION_POSTS_GET_POST_RESULT],
     response: data
