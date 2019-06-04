@@ -11,34 +11,48 @@
 </div>
 
 
-##### React applications boilerplate 
+#### React applications boilerplate 
 
 A simple boilerplate that helps you make your react application with Server Side Rendering support.
 
-### getting start
+### Getting start
 
 Make a copy of `.env.example` to `.env` for production
 and `.env.development` for development.
 
 Then you need to rename `code.example` to `code` directory.
 
-install packages
+### Installing Packages
 
-    yarn
+Yarn                           | Description
+-------------------------------|----------------------------------------------------------------
+`yarn start:dev`                  | Also you can add your application modules in `code` directory. For starting the project in `development` mode run these commands at project root.
+`yarn start:prod`                | For starting and simulating the project in `production` with `webpack-dev-server` run these commands.
+`yarn build && yarn start:serve` | For starting the project in `production` on the server run these commands.
 
-Also you can add your application modules in `code` directory.
+## Built With
 
-For starting the project in `development` mode run these commands at project root.
+* [React](https://reactjs.org/) - A JavaScript library 
+for building user interfaces
+* [Express](https://expressjs.com/) - Web framework for Node.js
+* [React Redux](https://redux.js.org/) - A predictable state container for JavaScript apps
+* [Node Sass](https://www.npmjs.com/package/node-sass) - Node-sass is a library that provides binding for Node.js to LibSass, the C version of the popular stylesheet preprocessor, Sass.
+* [Jest](https://jestjs.io/) - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
 
-    yarn start:dev
+## Versioning
 
-For starting and simulating the project in `production` with `webpack-dev-server` run these commands.
+We use [SemVer](http://semver.org/) for versioning.
 
-    yarn start:prod
+## Authors
 
-For starting the project in `production` on the server run these commands.
+* **AmirHossein Ahmadi** - *Developer* - [amirhossein693](https://github.com/amirhossein693)
 
-    yarn build && yarn start:serve
+* **AhmadReza Mohammadi** - *Developer* -
+[ARMy4D](https://github.com/ARMy4D)
+
+## License
+
+Phoneix is licensed under the MIT License - see the[LICENSE.md](LICENSE.md) file for details
 
 ### Links
 
