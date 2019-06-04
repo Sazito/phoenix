@@ -22,7 +22,7 @@ and `.env.development` for development.
 
 Then you need to rename `code.example` to `code` directory.
 
-### Installing
+### Installing Packages
 
 Yarn                           | Description
 -------------------------------|----------------------------------------------------------------
