@@ -26,9 +26,9 @@ Then you need to rename `code.example` to `code` directory.
 
 Yarn                           | Description
 -------------------------------|----------------------------------------------------------------
-yarn start:dev                 | Also you can add your application modules in `code` directory. For starting the project in `development` mode run these commands at project root.
-yarn start:prod                | For starting and simulating the project in `production` with `webpack-dev-server` run these commands.
-yarn build && yarn start:serve | For starting the project in `production` on the server run these commands.
+`yarn start:dev`                  | Also you can add your application modules in `code` directory. For starting the project in `development` mode run these commands at project root.
+`yarn start:prod`                | For starting and simulating the project in `production` with `webpack-dev-server` run these commands.
+`yarn build && yarn start:serve` | For starting the project in `production` on the server run these commands.
 
 ## Built With
 
