@@ -38,6 +38,7 @@ Yarn                           | Description
 * [Lerna](https://lerna.js.org/) - A tool for managing JavaScript projects with multiple packages.
 * [Express](https://expressjs.com/) - Web framework for Node.js
 * [React Redux](https://redux.js.org/) - A predictable state container for JavaScript apps
+* [React Router](https://reacttraining.com/react-router/) - React Router is a collection of navigational components that compose declaratively with your application. 
 * [Redux Saga](https://redux-saga.js.org/) - Is a library that aims to make application side effects (i.e. asynchronous things like data fetching and impure things like accessing the browser cache) easier to manage, more efficient to execute, easy to test, and better at handling failures.
 * [Morgan](https://github.com/expressjs/morgan) - HTTP request logger middleware for node.js
 * [Jest](https://jestjs.io/) - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
