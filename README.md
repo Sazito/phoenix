@@ -24,7 +24,7 @@ Then you need to rename `code.example` to `code` directory.
 
 ### Installing Packages
 
-Also you can add your application modules in `code` directory. 
+Use `yarn` for installing packages also you can add your application modules in `code` directory. 
 
 Yarn                           | Description
 -------------------------------|----------------------------------------------------------------
@@ -34,11 +34,13 @@ Yarn                           | Description
 
 ## Built With
 
-* [React](https://reactjs.org/) - A JavaScript library 
-for building user interfaces
+* [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+* [Lerna](https://lerna.js.org/) - A tool for managing JavaScript projects with multiple packages.
 * [Express](https://expressjs.com/) - Web framework for Node.js
 * [React Redux](https://redux.js.org/) - A predictable state container for JavaScript apps
-* [Node Sass](https://www.npmjs.com/package/node-sass) - Node-sass is a library that provides binding for Node.js to LibSass, the C version of the popular stylesheet preprocessor, Sass.
+* [React Router](https://reacttraining.com/react-router/) - React Router is a collection of navigational components that compose declaratively with your application. 
+* [Redux Saga](https://redux-saga.js.org/) - Is a library that aims to make application side effects (i.e. asynchronous things like data fetching and impure things like accessing the browser cache) easier to manage, more efficient to execute, easy to test, and better at handling failures.
+* [Morgan](https://github.com/expressjs/morgan) - HTTP request logger middleware for node.js
 * [Jest](https://jestjs.io/) - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
 
 ## Versioning
@@ -49,12 +51,11 @@ We use [SemVer](http://semver.org/) for versioning.
 
 * **AmirHossein Ahmadi** - *Developer* - [amirhossein693](https://github.com/amirhossein693)
 
-* **AhmadReza Mohammadi** - *Developer* -
-[ARMy4D](https://github.com/ARMy4D)
+* **AhmadReza Mohammadi** - *Developer* - [ARMy4D](https://github.com/ARMy4D)
 
 ## License
 
-Phoneix is licensed under the MIT License - see the[LICENSE.md](LICENSE.md) file for details
+Phoneix is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ### Links
 
