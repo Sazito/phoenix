@@ -6,6 +6,7 @@
   "author": "amirhossein693@gmail.com",
   "license": "MIT",
   "scripts": {
+    "setup": "./bin/setup.sh",
     "build:prod": "NODE_ENV=production webpack --config webpack.prod.js",
     "build:server": "NODE_ENV=production webpack --config webpack.server.js",
     "build": "yarn run build:prod && yarn run build:server",
@@ -22,6 +23,7 @@
     "http-proxy-middleware": "^0.19.1",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
+    "lodash.isnil": "^4.0.0",
     "morgan": "^1.9.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

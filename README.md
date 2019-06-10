@@ -17,14 +17,18 @@ A simple boilerplate that helps you make your react application with Server Side
 
 ### Getting start
 
-Make a copy of `.env.example` to `.env` for production
+Use `yarn setup` for making project ready to start.
+
+#### Manual
+
+Make a copy of `.env.default` to `.env` for production
 and `.env.development` for development.
 
 Then you need to rename `code.example` to `code` directory.
 
 ### Installing Packages
 
-Use `yarn` for installing packages also you can add your application modules in `code` directory. 
+Use `yarn` for installing packages. also you can add your application modules in `code` directory. 
 
 Yarn                           | Description
 -------------------------------|----------------------------------------------------------------
@@ -49,9 +53,11 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **AmirHossein Ahmadi** - *Developer* - [amirhossein693](https://github.com/amirhossein693)
+* **Amir Hossein Ahmadi** - *Developer* - [amirhossein693](https://github.com/amirhossein693)
 
-* **AhmadReza Mohammadi** - *Developer* - [ARMy4D](https://github.com/ARMy4D)
+* **Ahmad Reza Mohammadi** - *Developer* - [ARMy4D](https://github.com/ARMy4D)
+
+* **Mohammad Reza Mahmoudi** - *Developer* - [rezaaa](https://github.com/rezaaa)
 
 ## License
 
