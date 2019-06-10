@@ -39,14 +39,19 @@ const createUser = ({ initContext, token, checkUser }) => {
             return Promise.resolve({ data: context.user });
           } else {
             this.removeToken();
-            return Promise.resolve(null);
+            return Promise.resolve({});
           }
         }
-      } else if (!initContext && checkUser && typeof checkUser === "function") {
+      } else if (
+        !initContext &&
+        this.getToken() &&
+        checkUser &&
+        typeof checkUser === "function"
+      ) {
         return checkUser();
       } else {
         this.removeToken();
-        return Promise.resolve(null);
+        return Promise.resolve({});
       }
     }
   };
