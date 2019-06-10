@@ -1,4 +1,4 @@
-import { getRole, getRoleConfigs } from "../../code/configs";
+import { getRole, getRoleConfigs } from "../../code/consts";
 
 const hasPermission = (permissions, roleConfigs) => {
   return permissions.find(permission => {
@@ -15,7 +15,6 @@ const aclCheck = ({ permissions, user }) => {
   } else {
     if (
       permissions &&
-      user &&
       "permissions" in roleConfigs &&
       !!hasPermission(permissions, roleConfigs)
     ) {
