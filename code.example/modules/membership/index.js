@@ -1,5 +1,5 @@
 import api from "../../../modules/api_wrapper";
-import { endpoints, GET_CURRENT_USER, LOGIN } from "../../configs";
+import { endpoints, GET_CURRENT_USER, LOGIN } from "../../consts";
 
 export const checkUser = () => {
   return api.get(endpoints(GET_CURRENT_USER));
