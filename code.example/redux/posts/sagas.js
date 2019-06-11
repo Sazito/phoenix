@@ -1,6 +1,6 @@
 import * as actionTypes from "./action_types";
 import { put, takeLatest } from "redux-saga/effects";
-import { endpoints, POST } from "../../configs";
+import { endpoints, POST } from "../../consts";
 import api from "../../../modules/api_wrapper";
 
 function* getPostAction() {
