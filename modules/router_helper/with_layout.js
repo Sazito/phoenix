@@ -1,8 +1,8 @@
 import React from "react";
-import isNill from "lodash/isNil";
+import isNil from "lodash.isnil";
 
 const WithLayout = ({ children, layout: Layout }) => {
-  if (isNill(Layout)) return children;
+  if (isNil(Layout)) return children;
   return <Layout>{children}</Layout>;
 };
 
