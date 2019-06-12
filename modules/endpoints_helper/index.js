@@ -1,4 +1,4 @@
-import CONSTS from "../../code/configs/endpoints/";
+import CONSTS from "../../code/consts/endpoints/";
 
 function endpoints(key, params = {}) {
   if (!key) {
@@ -17,5 +17,5 @@ function endpoints(key, params = {}) {
   return routeAddress;
 }
 
-export * from "../../code/configs/endpoints/";
+export * from "../../code/consts/endpoints/";
 export default endpoints;
