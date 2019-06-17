@@ -6,7 +6,7 @@ module.exports = {
   mode: 'production',
   entry: './server/index.js',
   target: 'node',
-  externals: [nodeExternals()],
+  externals: [nodeExternals(), "react-helmet"],
   output: {
     path: path.resolve('build'),
     filename: 'index.js'

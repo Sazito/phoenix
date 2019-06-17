@@ -18,6 +18,7 @@ import { createUser } from "../../modules/membership";
 import { createAPI } from "../../modules/api_wrapper";
 import { checkUser } from "../../code/modules/membership";
 import CryptoJS from "crypto-js";
+import { Helmet } from "react-helmet";
 
 const loadRouteDependencies = (location, store) => {
   // get current components by matching current location against project's routes list
@@ -138,11 +139,14 @@ const all = (req, res) => {
               userHash
             )}</script>`;
           }
-
+          const helmet = Helmet.renderStatic();
+          const helmetData = helmet.title.toString() + helmet.meta.toString();
+          
           // sending prepared data, chunks and redux initial states to the client
           return res.send(
             indexData
               .replace("</head>", `${styles}${scripts}</head>`)
+              .replace("<title></title>", `${helmetData}`)
               .replace(
                 '<div id="root"></div>',
                 `<div id="root">${app}</div>${inlineScripts}`
