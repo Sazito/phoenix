@@ -46,6 +46,7 @@ Yarn                           | Description
 * [Redux Saga](https://redux-saga.js.org/) - Is a library that aims to make application side effects (i.e. asynchronous things like data fetching and impure things like accessing the browser cache) easier to manage, more efficient to execute, easy to test, and better at handling failures.
 * [Morgan](https://github.com/expressjs/morgan) - HTTP request logger middleware for node.js
 * [Jest](https://jestjs.io/) - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
+* [Helmet](https://github.com/nfl/react-helmet) - A document head manager for React.
 
 ## Versioning
 
