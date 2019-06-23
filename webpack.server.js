@@ -9,7 +9,8 @@ module.exports = {
   externals: [nodeExternals(), "react-helmet"],
   output: {
     path: path.resolve('build'),
-    filename: 'index.js'
+    filename: 'index.js',
+    chunkFilename: '[name].[contentHash].js'
   },
   plugins: [
     new CleanWebpackPlugin()
@@ -22,7 +23,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: path.resolve(__dirname, './code/.build_cache'),
+              cacheDirectory: true,
               presets: [
                 "@babel/preset-react"
               ],

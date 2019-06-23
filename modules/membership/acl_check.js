@@ -1,4 +1,4 @@
-import { getRole, getRoleConfigs } from "../../code/consts";
+import { getRole, getRoleConfigs } from "../../code/consts/acl/roles";
 
 const hasPermission = (permissions, roleConfigs) => {
   return permissions.find(permission => {

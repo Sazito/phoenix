@@ -1,6 +1,6 @@
-import endpoints from "../../modules/endpoints_helper";
+import endpoints from "../../modules/get_endpoint";
 
-export * from "../../modules/endpoints_helper";
+export * from "../../modules/get_endpoint";
 export * from "./acl/permissions";
 export * from "./acl/roles";
 export { endpoints };
