@@ -9,7 +9,8 @@ module.exports = {
   externals: [nodeExternals(), "react-helmet"],
   output: {
     path: path.resolve('build'),
-    filename: 'index.js'
+    filename: 'index.js',
+    chunkFilename: '[name].[contentHash].js'
   },
   plugins: [
     new CleanWebpackPlugin()
