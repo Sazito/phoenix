@@ -9,7 +9,8 @@ module.exports = {
   externals: [nodeExternals()],
   output: {
     path: path.resolve('build'),
-    filename: 'index.js'
+    filename: 'index.js',
+    chunkFilename: '[name].[contentHash].js'
   },
   plugins: [
     new CleanWebpackPlugin()

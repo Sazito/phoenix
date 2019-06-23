@@ -9,7 +9,7 @@ try {
   } else {
     console.error('');
     console.error(`${dotenvPath} does not exist`);
-    console.error(`Please make a copy from .env.example and set the correct data`);
+    console.error(`Please make a copy from .env.default and set the correct data`);
     console.error('');
     process.exit(1);
   }

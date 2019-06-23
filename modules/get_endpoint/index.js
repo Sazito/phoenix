@@ -1,11 +1,11 @@
-import CONSTS from "../../code/consts/endpoints/";
+import { ENDPOINTS } from "../../code/consts/endpoints/";
 
-function endpoints(key, params = {}) {
+function getEndpoint(key, params = {}) {
   if (!key) {
     console.warn("key is not exist");
   }
 
-  let routeAddress = CONSTS[key];
+  let routeAddress = ENDPOINTS[key];
 
   if (params && Object.keys(params).length) {
     Object.keys(params).map(param => {
@@ -17,5 +17,4 @@ function endpoints(key, params = {}) {
   return routeAddress;
 }
 
-export * from "../../code/consts/endpoints/";
-export default endpoints;
+export default getEndpoint;

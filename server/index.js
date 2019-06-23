@@ -13,8 +13,10 @@ const app = express();
 
 app.use(cookieParser());
 
+const morganLogFormat = process.env.DEBUG_MODE ? "combined" : "tiny";
+
 app.use(
-  morgan("tiny", {
+  morgan(morganLogFormat, {
     skip: function(req, res) {
       return res.statusCode < 400;
     },
@@ -23,7 +25,7 @@ app.use(
 );
 
 app.use(
-  morgan("tiny", {
+  morgan(morganLogFormat, {
     skip: function(req, res) {
       return res.statusCode >= 400;
     },
