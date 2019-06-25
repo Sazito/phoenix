@@ -6,7 +6,7 @@ import serialize from "serialize-javascript";
 import { matchRoutes } from "react-router-config";
 import { StaticRouter } from "react-router-dom";
 import Loadable from "react-loadable";
-import { getBundles } from "react-loadable/webpack";
+import { getBundles } from "react-loadable-ssr-addon";
 import stats from "../../dist/react-loadable.json";
 import App from "../../app";
 import index from "../../code/routes";
@@ -64,13 +64,14 @@ const all = (req, res) => {
       )
       .then(() => {
         const context = {};
-        const modules = [];
+        // const modules = [];
+        const modules = new Set();
 
         // computing initial state after running sagas and passing it to client via `window`
         const initState = store.getState();
 
         const app = ReactDOMServer.renderToString(
-          <Loadable.Capture report={moduleName => modules.push(moduleName)}>
+          <Loadable.Capture report={moduleName => modules.add(moduleName)}>
             <Provider store={store}>
               <StaticRouter location={req.url} context={context}>
                 <App
@@ -85,7 +86,9 @@ const all = (req, res) => {
         // get all bundles that are necessary for the current route
         // `stats` is the asset-manifest of application that contains list of all bundles and chunks
         // `modules` is list of current route's modules that detected by react loadable
-        const bundles = getBundles(stats, modules);
+        const modulesToBeLoaded = [...Array.from(modules)];
+
+        const bundles = getBundles(stats, modulesToBeLoaded);
 
         const indexFile = path.resolve("./dist/index.html");
         fs.readFile(indexFile, "utf8", (err, indexData) => {
@@ -101,23 +104,15 @@ const all = (req, res) => {
             return res.redirect(301, context.url);
           }
 
-          // separating css and js chunks
-          let stylesBundles = bundles.filter(bundle =>
-            bundle.file.endsWith(".css")
-          );
-          let scriptsBundles = bundles.filter(bundle =>
-            bundle.file.endsWith(".js")
-          );
-
           let styles = "";
-          (stylesBundles || []).map(style => {
-            styles += `<link href="/${style.file}" rel="stylesheet" />`;
+          (bundles.css || []).map(style => {
+            styles += `<link href="${style.publicPath}" rel="stylesheet" />`;
           });
 
           let scripts = "";
-          (scriptsBundles || []).map(script => {
-            scripts += `<script charset="utf-8" src="/${
-              script.file
+          (bundles.js || []).map(script => {
+            scripts += `<script charset="utf-8" src="${
+              script.publicPath
             }"></script>`;
           });
 
@@ -141,7 +136,7 @@ const all = (req, res) => {
           }
           const helmet = Helmet.renderStatic();
           const helmetData = helmet.title.toString() + helmet.meta.toString();
-          
+
           // sending prepared data, chunks and redux initial states to the client
           return res.send(
             indexData
