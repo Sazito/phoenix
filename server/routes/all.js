@@ -64,7 +64,6 @@ const all = (req, res) => {
       )
       .then(() => {
         const context = {};
-        // const modules = [];
         const modules = new Set();
 
         // computing initial state after running sagas and passing it to client via `window`
