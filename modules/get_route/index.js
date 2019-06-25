@@ -1,4 +1,10 @@
 import { ROUTES } from "../../code/consts/routes/";
+import { env } from "../../code/configs";
+
+function removeTrailingSlashes(route) {
+  //Removes one or more trailing slashes from route
+  return route.replace(/(https?:\/\/)|(\/)+/g, "$1$2");
+}
 
 function getRoutes(key, params = {}, basePath = "") {
   if (!key) {
@@ -12,11 +18,9 @@ function getRoutes(key, params = {}, basePath = "") {
       routeAddress = routeAddress.replace(`:${param}`, params[param]);
       return param;
     });
-  } else {
-    return routeAddress;
   }
 
-  return `${basePath}${routeAddress}`;
+  return removeTrailingSlashes(`/${basePath || env.BASEPATH}${routeAddress}`);
 }
 
 export default getRoutes;
