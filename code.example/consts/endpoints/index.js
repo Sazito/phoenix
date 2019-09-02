@@ -6,7 +6,7 @@ export const USER = "USER";
 export const POSTS = "POSTS";
 export const POST = "POST";
 
-const CONSTS = {
+export const ENDPOINTS = {
   [LOGIN]: "auth/login",
   [VALIDATE_USER]: "auth/validate_account",
   [GET_CURRENT_USER]: "auth/user",
@@ -16,4 +16,6 @@ const CONSTS = {
   [POST]: "posts/:id"
 };
 
-export default CONSTS;
+import getEndpoint from "../../../modules/get_endpoint";
+export default getEndpoint;
+
