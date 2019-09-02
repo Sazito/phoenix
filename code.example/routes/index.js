@@ -25,15 +25,15 @@ const routes = [
     layout: CleanLayout,
     routes: [
       {
-        path: "",
+        path: "/dashboard",
         layout: DashboardLayout,
         routes: [
           {
-            path: "/settings",
+            path: "/dashboard/settings",
             component: DashboardSettingsRoute
           },
           {
-            path: "/profile",
+            path: "/dashboard/profile",
             component: DashboardProfileRoute
           }
         ]
