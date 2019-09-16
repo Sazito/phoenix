@@ -5,9 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plug
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const RtlCssPlugin = require('rtl-css-transform-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const {
-  ReactLoadablePlugin
-} = require('react-loadable/webpack');
+const ReactLoadableSSRAddon = require('react-loadable-ssr-addon');
 const isProduction = process.env.NODE_ENV === 'production';
 const dotenvPath = isProduction ? './.env' : './.env.development';
 
@@ -17,7 +15,7 @@ const config = {
     new CleanWebpackPlugin(),
     new DotenvWebpack({
       path: dotenvPath,
-      safe: true // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+      safe: true // load '.env.default' to verify the '.env' variables are all set. Can also be a string to a different file.
     }),
     new ExtractCssChunks({
       // Options similar to the same options in webpackOptions.output
@@ -26,8 +24,8 @@ const config = {
       chunkFilename: "assets/[name]-ltr.[hash].css"
     }),
     new OptimizeCSSAssetsPlugin({}),
-    new ReactLoadablePlugin({
-      filename: './dist/react-loadable.json'
+    new ReactLoadableSSRAddon({
+      filename: 'react-loadable.json'
     }),
     new RtlCssPlugin({
       filename: 'assets/[name]-rtl.[hash].css'

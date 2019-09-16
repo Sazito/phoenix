@@ -29,7 +29,7 @@ const RouteFactory = props => {
   if (isArray(routes)) {
     const calculatedRoutes = routes.map(route => ({
       ...route,
-      path: `${props.path}${route.path}`
+      path: route.path
     }));
     render = prop => (
       <WithACL {...aclProps}>

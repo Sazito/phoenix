@@ -1,6 +1,6 @@
 import * as actionTypes from "./action_types";
 import { put, takeLatest } from "redux-saga/effects";
-import { endpoints, USER } from "../../consts";
+import endpoints, { USER } from "../../consts/endpoints";
 import api from "../../../modules/api_wrapper";
 
 function* getUserAction() {
