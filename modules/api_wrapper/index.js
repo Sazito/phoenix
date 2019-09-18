@@ -1,5 +1,5 @@
 import fetch from "isomorphic-fetch";
-import { env } from "../../code/configs";
+import { env, customHeaders } from "../../code/configs";
 
 // let instance = null;
 const methods = ["post", "get", "put", "delete", "update"];
@@ -12,10 +12,10 @@ const APICreator = ({ method, token }) => {
     const options = {
       method: method.toUpperCase(),
       body: JSON.stringify(body),
-      headers: {}
+      headers: customHeaders
     };
 
-    if (token) {
+    if (token && typeof token === 'string') {
       options.headers["Authorization"] = token;
     }
 
