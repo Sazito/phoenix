@@ -54,7 +54,7 @@ const config = {
         use: ['prettier-loader']
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.(le|sa|sc|c)ss$/,
         use: [
           // extract css
           {
