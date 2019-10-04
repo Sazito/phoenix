@@ -1,8 +1,10 @@
 const path = require('path');
+const merge = require('webpack-merge');
+const codeServerConfig = require('./code/configs/webpack/webpack.server');
 const nodeExternals = require('webpack-node-externals');
 const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plugin');
 
-module.exports = {
+const config = {
   mode: 'production',
   entry: './server/index.js',
   target: 'node',
@@ -86,3 +88,5 @@ module.exports = {
     ]
   }
 };
+
+module.exports = merge.smart(config, codeServerConfig);
