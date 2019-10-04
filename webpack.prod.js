@@ -77,6 +77,10 @@ const config = {
           // sass-loader
           {
             loader: 'sass-loader'
+          },
+          // less-loader
+          {
+            loader: 'less-loader'
           }
         ]
       }

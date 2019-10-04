@@ -33,7 +33,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.(le|sa|sc|c)ss$/,
         use: [
           // style-loader
           {
@@ -52,6 +52,10 @@ const config = {
           // sass-loader
           {
             loader: 'sass-loader'
+          },
+          // less-loader
+          {
+            loader: 'less-loader'
           }
         ]
       }
