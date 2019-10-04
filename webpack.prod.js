@@ -1,4 +1,5 @@
 const common = require('./webpack.common');
+const codeProdConfig = require('./code/configs/webpack/webpack.prod');
 const merge = require('webpack-merge');
 const DotenvWebpack = require('dotenv-webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plugin');
@@ -83,4 +84,4 @@ const config = {
   }
 };
 
-module.exports = merge(common, config);
+module.exports = merge.smart(common, config, codeProdConfig);
