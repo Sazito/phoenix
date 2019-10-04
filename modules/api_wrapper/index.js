@@ -15,7 +15,7 @@ const APICreator = ({ method, token }) => {
       headers: customHeaders
     };
 
-    if (token && typeof token === 'string') {
+    if (token && typeof token === "string") {
       options.headers["Authorization"] = token;
     }
 

@@ -110,9 +110,7 @@ const all = (req, res) => {
 
           let scripts = "";
           (bundles.js || []).map(script => {
-            scripts += `<script charset="utf-8" src="${
-              script.publicPath
-            }"></script>`;
+            scripts += `<script charset="utf-8" src="${script.publicPath}"></script>`;
           });
 
           let inlineScripts = "";
