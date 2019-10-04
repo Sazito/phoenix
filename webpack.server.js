@@ -39,7 +39,7 @@ const config = {
         ]
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.(le|sa|sc|c)ss$/,
         use: [
           // isomorphic-style-loader
           {
