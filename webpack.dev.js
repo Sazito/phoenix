@@ -1,4 +1,5 @@
 const common = require('./webpack.common');
+const codeDevConfig = require('./code/configs/webpack/webpack.dev');
 const merge = require('webpack-merge');
 const DotenvWebpack = require('dotenv-webpack');
 const dotenv = require('dotenv');
@@ -58,4 +59,4 @@ const config = {
   }
 };
 
-module.exports = merge(common, config);
+module.exports = merge.smart(common, config, codeDevConfig);
