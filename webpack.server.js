@@ -39,7 +39,30 @@ const config = {
         ]
       },
       {
-        test: /\.(le|sa|sc|c)ss$/,
+        test: /\.(le|c)ss$/,
+        use: [
+          // isomorphic-style-loader
+          {
+            loader: 'isomorphic-style-loader'
+          },
+          // css-loader
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              camelCase: true,
+              localIdentName: '[name]__[local]__[hash:base64:5]'
+            }
+          },
+          // less-loader
+          {
+            loader: 'less-loader'
+          }
+        ]
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
         use: [
           // isomorphic-style-loader
           {
@@ -58,10 +81,6 @@ const config = {
           // sass-loader
           {
             loader: 'sass-loader'
-          },
-          // less-loader
-          {
-            loader: 'less-loader'
           }
         ]
       },
