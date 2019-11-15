@@ -56,9 +56,13 @@ const config = {
       {
         test: /\.(le|c)ss$/,
         use: [
-          // style-loader
+          // extract css
           {
-            loader: 'style-loader'
+            loader: ExtractCssChunks.loader,
+            options: {
+              hot: true,
+              reloadAll: true
+            }
           },
           // css-loader
           {
@@ -79,9 +83,13 @@ const config = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          // style-loader
+          // extract css
           {
-            loader: 'style-loader'
+            loader: ExtractCssChunks.loader,
+            options: {
+              hot: true,
+              reloadAll: true
+            }
           },
           // css-loader
           {
