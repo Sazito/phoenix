@@ -1,8 +1,10 @@
 const path = require('path');
+const merge = require('webpack-merge');
+const codeServerConfig = require('./code/configs/webpack/webpack.server');
 const nodeExternals = require('webpack-node-externals');
 const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plugin');
 
-module.exports = {
+const config = {
   mode: 'production',
   entry: './server/index.js',
   target: 'node',
@@ -34,6 +36,29 @@ module.exports = {
             }
           },
           'prettier-loader'
+        ]
+      },
+      {
+        test: /\.(le|c)ss$/,
+        use: [
+          // isomorphic-style-loader
+          {
+            loader: 'isomorphic-style-loader'
+          },
+          // css-loader
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              camelCase: true,
+              localIdentName: '[name]__[local]__[hash:base64:5]'
+            }
+          },
+          // less-loader
+          {
+            loader: 'less-loader'
+          }
         ]
       },
       {
@@ -86,3 +111,5 @@ module.exports = {
     ]
   }
 };
+
+module.exports = merge.smart(config, codeServerConfig);

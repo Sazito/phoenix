@@ -1,4 +1,5 @@
 const common = require('./webpack.common');
+const codeDevConfig = require('./code/configs/webpack/webpack.dev');
 const merge = require('webpack-merge');
 const DotenvWebpack = require('dotenv-webpack');
 const dotenv = require('dotenv');
@@ -32,6 +33,29 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.(le|c)ss$/,
+        use: [
+          // style-loader
+          {
+            loader: 'style-loader'
+          },
+          // css-loader
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              camelCase: true,
+              localIdentName: '[name]__[local]__[hash:base64:5]'
+            }
+          },
+          // less-loader
+          {
+            loader: 'less-loader'
+          }
+        ]
+      },
+      {
         test: /\.(sa|sc|c)ss$/,
         use: [
           // style-loader
@@ -58,4 +82,4 @@ const config = {
   }
 };
 
-module.exports = merge(common, config);
+module.exports = merge.smart(common, config, codeDevConfig);

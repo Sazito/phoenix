@@ -1,4 +1,5 @@
 const common = require('./webpack.common');
+const codeProdConfig = require('./code/configs/webpack/webpack.prod');
 const merge = require('webpack-merge');
 const DotenvWebpack = require('dotenv-webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plugin');
@@ -53,6 +54,33 @@ const config = {
         use: ['prettier-loader']
       },
       {
+        test: /\.(le|c)ss$/,
+        use: [
+          // extract css
+          {
+            loader: ExtractCssChunks.loader,
+            options: {
+              hot: true,
+              reloadAll: true
+            }
+          },
+          // css-loader
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              camelCase: true,
+              localIdentName: '[name]__[local]__[hash:base64:5]'
+            }
+          },
+          // less-loader
+          {
+            loader: 'less-loader'
+          }
+        ]
+      },
+      {
         test: /\.(sa|sc|c)ss$/,
         use: [
           // extract css
@@ -67,9 +95,9 @@ const config = {
           {
             loader: 'css-loader',
             options: {
+              sourceMap: true,
               modules: true,
               camelCase: true,
-              importLoaders: true,
               localIdentName: '[name]__[local]__[hash:base64:5]'
             }
           },
@@ -83,4 +111,4 @@ const config = {
   }
 };
 
-module.exports = merge(common, config);
+module.exports = merge.smart(common, config, codeProdConfig);
