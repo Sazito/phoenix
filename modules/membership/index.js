@@ -6,15 +6,17 @@ import aclCheck from "./acl_check";
 const createUser = ({ initContext, token, checkUser }) => {
   return {
     getToken({ callback } = {}) {
-      if (typeof window === "object") {
-        return Cookies.get(env.APP_TOKEN);
+      let theToken = Cookies.get(env.APP_TOKEN);
+      let appToken = null;
+      if (typeof window === "object" && typeof theToken === "string") {
+        appToken = theToken;
       } else if (typeof token === "string") {
-        return token;
+        appToken = token;
       }
       if (callback && typeof callback === "function") {
         callback();
       }
-      return token;
+      return appToken;
     },
     setToken({ token, callback } = {}) {
       if (typeof window === "object") {

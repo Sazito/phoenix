@@ -15,8 +15,7 @@ const config = {
   plugins: [
     new CleanWebpackPlugin(),
     new DotenvWebpack({
-      path: dotenvPath,
-      safe: true // load '.env.default' to verify the '.env' variables are all set. Can also be a string to a different file.
+      path: dotenvPath
     }),
     new ExtractCssChunks({
       // Options similar to the same options in webpackOptions.output
