@@ -5,6 +5,7 @@ import { pHome } from "./home_page.scss";
 import { getPost } from "../../redux/posts/actions";
 import { env } from "../../configs";
 import Loading from "../../components/loading";
+import { WithLocale } from "../../../modules/localization";
 
 const mapStateToProps = state => {
   return {
@@ -22,10 +23,17 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const HomePage = ({ onGetPost, isFetched, isLoading, post }) => {
+const HomePage = ({ onGetPost, isFetched, isLoading, post, locale }) => {
   useEffect(() => {
     !isFetched && onGetPost();
   }, []);
+
+  const {
+    __,
+    number,
+    currency
+  } = locale;
+
 
   return (
     <>
@@ -39,6 +47,11 @@ const HomePage = ({ onGetPost, isFetched, isLoading, post }) => {
           </div>
         )}
       </div>
+      <div>{currency(1000, { useGlyph: true })}</div>
+      <div>{number(1000)}</div>
+      <div>
+        {__("Hello")} {__("YES")} {__("TEST {{time}}", { time: "11:30" })}
+      </div>
     </>
   );
 };
@@ -48,4 +61,4 @@ const HomePageWrapper = connect(
   mapDispatchToProps
 )(HomePage);
 
-export default HomePageWrapper;
+export default WithLocale(HomePageWrapper);

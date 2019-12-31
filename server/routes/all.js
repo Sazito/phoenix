@@ -19,6 +19,7 @@ import { createAPI } from "../../modules/api_wrapper";
 import { checkUser } from "../../code/modules/membership";
 import CryptoJS from "crypto-js";
 import { Helmet } from "react-helmet";
+import { createLocale } from "../../modules/localization";
 
 const loadRouteDependencies = (location, store) => {
   // get current components by matching current location against project's routes list
@@ -51,6 +52,7 @@ const all = (req, res) => {
     token,
     checkUser
   });
+  const locale = createLocale({});
 
   theUser.getUser().then(user => {
     // we need to start sagas outside the Redux middleware environment
@@ -76,6 +78,7 @@ const all = (req, res) => {
                 <App
                   user={user && user.status === 200 && user.data}
                   userContext={theUser && theUser}
+                  locale={locale}
                 />
               </StaticRouter>
             </Provider>

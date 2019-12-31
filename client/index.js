@@ -6,6 +6,7 @@ import App from "../app";
 import { Provider } from "react-redux";
 import createStore from "../store";
 import { createUser } from "../modules/membership";
+import { createLocale } from "../modules/localization";
 import rootSaga from "../code/redux/root_saga";
 import isProduction from "../modules/utils/is_production";
 import { checkUser } from "../code/modules/membership";
@@ -32,6 +33,8 @@ if (isProduction) {
   });
 }
 
+const locale = createLocale({});
+
 // we need to start sagas outside the Redux middleware environment
 // because of running necessary sagas for pre-fetching data for server side rendering on server app
 store.runSaga(rootSaga);
@@ -45,7 +48,11 @@ theUser.getUser().then(user => {
     renderMethod(
       <Provider store={store}>
         <BrowserRouter>
-          <App user={user && user.data} userContext={theUser && theUser} />
+          <App
+            user={user && user.data}
+            userContext={theUser && theUser}
+            locale={locale}
+          />
         </BrowserRouter>
       </Provider>,
       root

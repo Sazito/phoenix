@@ -5,6 +5,10 @@ const DotenvWebpack = require('dotenv-webpack');
 const dotenv = require('dotenv');
 const dotenvPath = './.env.development';
 const proxyList = require("./code/configs/proxy");
+/* */
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
+const RtlCssPlugin = require('rtl-css-transform-webpack-plugin');
+/* */
 const env = dotenv.config({
   path: dotenvPath
 }).parsed;
@@ -24,7 +28,18 @@ const config = {
   plugins: [
     new DotenvWebpack({
       path: dotenvPath
+    }),
+    /* */
+    new ExtractCssChunks({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "assets/[name]-ltr.[hash].css",
+      chunkFilename: "assets/[name]-ltr.[hash].css"
+    }),
+    new RtlCssPlugin({
+      filename: 'assets/[name]-rtl.[hash].css'
     })
+    /* */
   ],
   devServer: {
     port: env.PORT,
@@ -37,7 +52,9 @@ const config = {
         use: [
           // style-loader
           {
-            loader: 'style-loader'
+            /* */
+            loader: ExtractCssChunks.loader,
+            /* */
           },
           // css-loader
           {
@@ -60,7 +77,9 @@ const config = {
         use: [
           // style-loader
           {
-            loader: 'style-loader'
+            /* */
+            loader: ExtractCssChunks.loader,
+            /* */
           },
           // css-loader
           {
