@@ -5,10 +5,8 @@ const DotenvWebpack = require('dotenv-webpack');
 const dotenv = require('dotenv');
 const dotenvPath = './.env.development';
 const proxyList = require("./code/configs/proxy");
-/* */
-const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
+const ExtractCssChunksWithPageDirection = require("extract-css-chunks-webpack-plugin-with-page-direction");
 const RtlCssPlugin = require('rtl-css-transform-webpack-plugin');
-/* */
 const env = dotenv.config({
   path: dotenvPath
 }).parsed;
@@ -29,17 +27,14 @@ const config = {
     new DotenvWebpack({
       path: dotenvPath
     }),
-    /* */
-    new ExtractCssChunks({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "assets/[name]-ltr.[hash].css",
-      chunkFilename: "assets/[name]-ltr.[hash].css"
+    new ExtractCssChunksWithPageDirection({
+      filename: "assets/[name]-[pagedir].css",
+      chunkFilename: "assets/[name]-[pagedir].css"
     }),
     new RtlCssPlugin({
-      filename: 'assets/[name]-rtl.[hash].css'
+      filename: 'assets/[name]-rtl.css',
+      sourcemap: true
     })
-    /* */
   ],
   devServer: {
     port: env.PORT,
@@ -52,9 +47,11 @@ const config = {
         use: [
           // style-loader
           {
-            /* */
-            loader: ExtractCssChunks.loader,
-            /* */
+            loader: ExtractCssChunksWithPageDirection.loader,
+            options: {
+              hot: true,
+              reloadAll: true
+            }
           },
           // css-loader
           {
@@ -77,9 +74,11 @@ const config = {
         use: [
           // style-loader
           {
-            /* */
-            loader: ExtractCssChunks.loader,
-            /* */
+            loader: ExtractCssChunksWithPageDirection.loader,
+            options: {
+              hot: true,
+              reloadAll: true
+            }
           },
           // css-loader
           {

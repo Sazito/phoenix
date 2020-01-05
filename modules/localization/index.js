@@ -1,11 +1,13 @@
 import LocaleContext from "./locale_context";
-import WithLocale from "./with_locale";
+import withLocale from "./with_locale";
 import {
   __,
   detectLocaleFromUrlPath,
   getLocaleConfig,
   numberFormat
 } from "./utils";
+import getRoutes from "../get_route";
+import { env } from "../../code/configs";
 
 const createLocale = ({ localeCode, urlPath }) => {
   const code = localeCode || detectLocaleFromUrlPath({ urlPath });
@@ -25,12 +27,6 @@ const createLocale = ({ localeCode, urlPath }) => {
     getDirection: () => {
       return config.direction;
     },
-    getCurrencies: () => {
-      return config.currencies;
-    },
-    getDefaultCurrency: () => {
-      return config.defaultCurrency;
-    },
     number(num, { decimals, thousandsSep, pad } = {}) {
       const options = {
         decimalPoint: config.decimalPoint
@@ -49,6 +45,25 @@ const createLocale = ({ localeCode, urlPath }) => {
       }
 
       return localeNumber(numberFormat(num, options));
+    },
+    date(date, { format, calendar, native = true } = {}) {
+      const calendarClass = calendar || config.defaultCalendar;
+      const theDate = calendarClass(date);
+      const theDateWithLocale = native ? theDate.locale(code) : theDate;
+      const output = theDateWithLocale.format(format);
+      return native ? localeNumber(output) : output;
+    },
+    getCalendars: () => {
+      return config.calendars;
+    },
+    getDefaultCalendar: () => {
+      return config.defaultCalendar;
+    },
+    getCurrencies: () => {
+      return config.currencies;
+    },
+    getDefaultCurrency: () => {
+      return config.defaultCurrency;
     },
     currency(num, { decimals, useGlyph, useUnit, currency } = {}) {
       const options = {
@@ -73,9 +88,17 @@ const createLocale = ({ localeCode, urlPath }) => {
         },
         locale
       );
+    },
+    getRoutes: (key, params) => {
+      return getRoutes(
+        key,
+        params,
+        "",
+        code === env.DEFAULT_LOCALE ? "/" : code
+      );
     }
   };
 
   return locale;
 };
-export { createLocale, LocaleContext, WithLocale };
+export { createLocale, LocaleContext, withLocale };

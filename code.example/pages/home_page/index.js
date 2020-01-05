@@ -5,7 +5,7 @@ import { pHome } from "./home_page.scss";
 import { getPost } from "../../redux/posts/actions";
 import { env } from "../../configs";
 import Loading from "../../components/loading";
-import { WithLocale } from "../../../modules/localization";
+import { withLocale } from "../../../modules/localization";
 
 const mapStateToProps = state => {
   return {
@@ -61,4 +61,4 @@ const HomePageWrapper = connect(
   mapDispatchToProps
 )(HomePage);
 
-export default WithLocale(HomePageWrapper);
+export default withLocale(HomePageWrapper);

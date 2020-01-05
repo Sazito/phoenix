@@ -1,4 +1,5 @@
 import { env } from "../../code/configs";
+import common from "../../code/locales/default";
 import localeMaps from "../../code/locales/locale_maps";
 const variableRegex = /([{]+[{])\w+([}]+[}])/g;
 
@@ -11,7 +12,14 @@ export const detectLocaleFromUrlPath = ({ urlPath }) => {
 };
 
 export const getLocaleConfig = code => {
-  return localeMaps[code];
+  // console.log({
+  //   code,
+  //   localeMaps
+  // });
+  return {
+    ...common,
+    ...localeMaps[code]
+  };
 };
 
 export const __ = (query, param, locale) => {

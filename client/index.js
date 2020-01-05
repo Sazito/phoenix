@@ -13,6 +13,8 @@ import { checkUser } from "../code/modules/membership";
 import { env } from "../code/configs";
 import { createAPI } from "../modules/api_wrapper";
 import Cookies from "js-cookie";
+import { calculateLocale } from "../modules/localization/check_locale";
+import { changeLocale } from "../modules/localization/change_locale";
 
 const root = document.querySelector("#root");
 
@@ -33,7 +35,12 @@ if (isProduction) {
   });
 }
 
-const locale = createLocale({});
+const localeCode = calculateLocale();
+
+const locale = createLocale({ localeCode });
+if (!isProduction) {
+  changeLocale({ locale });
+}
 
 // we need to start sagas outside the Redux middleware environment
 // because of running necessary sagas for pre-fetching data for server side rendering on server app
