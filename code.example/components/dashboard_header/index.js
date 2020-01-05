@@ -1,15 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { cDashboardHeader } from "./dashboard_header.scss";
+import {
+  ROUTE_DASHBOARD_SETTINGS,
+  ROUTE_DASHBOARD_PROFILE
+} from "../../consts/routes";
+import { withLocale } from "../../../modules/localization";
 
-const Header = () => {
+const Header = ({ locale }) => {
+  const { __, getRoutes } = locale;
   return (
     <div className={cDashboardHeader}>
       <h2>Welcome to dashboard</h2>
-      <Link to={"/dashboard/settings"}>Settings</Link>
-      <Link to={"/dashboard/profile"}>Profile</Link>
+      <Link to={getRoutes(ROUTE_DASHBOARD_SETTINGS)}>{__("Settings")}</Link>
+      <Link to={getRoutes(ROUTE_DASHBOARD_PROFILE)}>{__("Profile")}</Link>
     </div>
   );
 };
 
-export default Header;
+export default withLocale(Header);

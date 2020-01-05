@@ -1,5 +1,6 @@
 .p-home {
-  text-align: center;
+  /* https://rtlcss.com/learn/usage-guide/value-directives/#replace */
+  text-align: right #{"/*rtl:left*/"};
   font-size: 2rem;
   padding: 2rem 1rem 1rem;
 }

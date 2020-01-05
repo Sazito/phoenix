@@ -7,33 +7,41 @@ import NotFoundRoute from "./routes/not_found_route";
 
 import CleanLayout from "../layouts/clean_layout";
 import DashboardLayout from "../layouts/dashboard_layout";
+import getRoutes, {
+  ROUTE_HOME,
+  ROUTE_LOGIN,
+  ROUTE_DASHBOARD,
+  ROUTE_DASHBOARD_SETTINGS,
+  ROUTE_DASHBOARD_PROFILE
+} from "../consts/routes";
 
 const routes = [
   {
-    path: "/",
+    path: getRoutes(ROUTE_HOME),
     exact: true,
+    strict: true,
     component: HomeRoute,
     layout: CleanLayout
   },
   {
-    path: "/login",
+    path: getRoutes(ROUTE_LOGIN),
     component: LoginRoute,
     layout: CleanLayout
   },
   {
-    path: "/dashboard",
+    path: getRoutes(ROUTE_DASHBOARD),
     layout: CleanLayout,
     routes: [
       {
-        path: "/dashboard",
+        path: getRoutes(ROUTE_DASHBOARD),
         layout: DashboardLayout,
         routes: [
           {
-            path: "/dashboard/settings",
+            path: getRoutes(ROUTE_DASHBOARD_SETTINGS),
             component: DashboardSettingsRoute
           },
           {
-            path: "/dashboard/profile",
+            path: getRoutes(ROUTE_DASHBOARD_PROFILE),
             component: DashboardProfileRoute
           }
         ]

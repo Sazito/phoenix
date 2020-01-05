@@ -1,17 +1,20 @@
 import translations from "./translations";
 import currencies from "./currencies";
-import calendars from "../default/calendars";
+import calendars from "./calendars";
+import dayjs from "dayjs";
 
 export default {
   code: "en-us",
   language: "en",
   direction: "ltr",
-  countryCode: "us",
+  date: {
+    DateClass: dayjs
+  },
   thousandsSep: ",",
   decimalPoint: ".",
   number: num => num,
   currencies,
-  defaultCurrency: currencies.USD,
+  defaultCurrency: currencies.EUR,
   calendars,
   defaultCalendar: calendars.gregory,
   translations
