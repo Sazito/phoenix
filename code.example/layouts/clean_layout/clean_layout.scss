@@ -1,5 +1,13 @@
 .l-cleanLayout__navbar{
-  text-align: center;
+  &:after{
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+.l-cleanLayout__navbar--main{
+  /* https://rtlcss.com/learn/usage-guide/value-directives/#replace */
+  float: left #{"/*!rtl:ignore*/"};
   margin-bottom: 1rem;
   a:link,
   a:hover,
@@ -8,5 +16,23 @@
     margin: 1rem;
     color: rgba(40, 40, 40, 1);
     display: inline-block;
+    font-size: 1rem;
+    line-height: 1;
+  }
+}
+.l-cleanLayout__navbar--extra{
+  /* https://rtlcss.com/learn/usage-guide/value-directives/#replace */
+  float: right #{"/*!rtl:ignore*/"};
+  direction: ltr #{"/*!rtl:ignore*/"};
+  margin-bottom: 1rem;
+  a:link,
+  a:hover,
+  a:visited,
+  a:active {
+    margin: 1rem;
+    color: rgba(40, 40, 40, 1);
+    display: inline-block;
+    font-size: .7rem;
+    line-height: 1;
   }
 }

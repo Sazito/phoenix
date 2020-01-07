@@ -29,47 +29,19 @@ const HomePage = ({ onGetPost, isFetched, isLoading, post, locale }) => {
     !isFetched && onGetPost();
   }, []);
 
-  const { __, number, currency, date, getCalendars } = locale;
+  const { __ } = locale;
 
   return (
     <>
       <Helmet>
         <title>{env.APP_NAME}</title>
       </Helmet>
-      <div>{currency(1000, { useGlyph: true, useUnit: true })}</div>
-      <div>{number(1000)}</div>
-      <div>
-        {date(new Date("2018 01 01"), { format: "MMMM, YYYY-MM-DD HH:mm" })}
-      </div>
-      <div>
-        {date(new Date("2018 01 01"), {
-          format: "MMMM, YYYY-MM-DD HH:mm",
-          calendar: getCalendars().gregory
-        })}
-      </div>
-      <div>
-        {date(new Date("2018 01 01"), {
-          format: "MMMM, YYYY-MM-DD HH:mm",
-          native: false
-        })}
-      </div>
-      <div>
-        {date(+new Date("2018 01 01"), {
-          format: "MMMM, YYYY-MM-DD HH:mm",
-          calendar: getCalendars().gregory,
-          native: false
-        })}
-      </div>
-      <div>
-        {__("Hello")} {__("YES")} {__("TEST {{time}}", { time: "11:30" })}
-      </div>
       {isLoading && <Loading />}
       <div className={pHome}>
         {!isLoading && post && (
           <div>
             <Logo />
-            <div>Welcome to {env.APP_NAME}</div>
-            <div>{post.title}</div>
+            <div>{__("Hello")}</div>
           </div>
         )}
       </div>

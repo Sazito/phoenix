@@ -23,7 +23,7 @@ function getRoutes(key, params = {}, basePath = "", localeCode) {
   const { BASEPATH } = env;
 
   const route = removeTrailingSlashes(
-    `/${localeCode ? `${localeCode}/` : `:localeCode?/`}${basePath ||
+    `/${localeCode ? `${localeCode}/` : ``}${basePath ||
       BASEPATH}${routeAddress}`
   );
   return route;

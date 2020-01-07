@@ -15,33 +15,35 @@ import getRoutes, {
   ROUTE_DASHBOARD_PROFILE
 } from "../consts/routes";
 
+const getPath = key => getRoutes(key, {}, "", ":localeCode?/");
+
 const routes = [
   {
-    path: getRoutes(ROUTE_HOME),
+    path: getPath(ROUTE_HOME),
     exact: true,
     strict: true,
     component: HomeRoute,
     layout: CleanLayout
   },
   {
-    path: getRoutes(ROUTE_LOGIN),
+    path: getPath(ROUTE_LOGIN),
     component: LoginRoute,
     layout: CleanLayout
   },
   {
-    path: getRoutes(ROUTE_DASHBOARD),
+    path: getPath(ROUTE_DASHBOARD),
     layout: CleanLayout,
     routes: [
       {
-        path: getRoutes(ROUTE_DASHBOARD),
+        path: getPath(ROUTE_DASHBOARD),
         layout: DashboardLayout,
         routes: [
           {
-            path: getRoutes(ROUTE_DASHBOARD_SETTINGS),
+            path: getPath(ROUTE_DASHBOARD_SETTINGS),
             component: DashboardSettingsRoute
           },
           {
-            path: getRoutes(ROUTE_DASHBOARD_PROFILE),
+            path: getPath(ROUTE_DASHBOARD_PROFILE),
             component: DashboardProfileRoute
           }
         ]

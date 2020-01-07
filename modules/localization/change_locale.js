@@ -28,11 +28,22 @@ export const changeLocale = ({ locale, history }) => {
   }
   if (typeof window === "object" && "document" in window) {
     const html = document.getElementsByTagName("html")[0];
+    const head = document.getElementsByTagName("head")[0];
     const links = document.getElementsByTagName("link");
     html.dir = dir;
     html.lang = lang;
     (links || []).forEach(link => {
-      link.href = link.href.replace(REGEXP_LINK_HREF_DIR, `-${dir}`);
+      const newLink = link.cloneNode(true);
+      const currentDir = link.href.match(REGEXP_LINK_HREF_DIR)[0];
+      const newDir = `-${dir}`;
+      if (currentDir !== newDir) {
+        const newLinkHref = link.href.replace(REGEXP_LINK_HREF_DIR, newDir);
+        newLink.href = newLinkHref;
+        newLink.addEventListener('load', function () {
+          head.removeChild(link);
+        }, false);
+        head.appendChild(newLink);
+      }
     });
   }
 };

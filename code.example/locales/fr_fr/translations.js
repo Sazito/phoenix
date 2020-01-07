@@ -1,5 +1,4 @@
 export default {
-  Hello: "Bonjour!!!",
-  "TEST {{time}}": "tester {{time}} :)",
+  Hello: "Bonjour",
   "Coming Soon": "Bientôt disponible"
 };

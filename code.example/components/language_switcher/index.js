@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import LocaleContext from "../../../modules/localization/locale_context";
 import { withLocale } from "../../../modules/localization";
 
-const LanguageSwitcher = ({ locale }) => {
+const LanguageSwitcher = ({ locale, className }) => {
   const { changeLocale } = useContext(LocaleContext);
   const getLocaleCode = locale.getLocaleCode();
 
@@ -14,7 +14,7 @@ const LanguageSwitcher = ({ locale }) => {
   };
 
   return (
-    <>
+    <div className={className}>
       <a href="#" onClick={e => onChangeLocale(e, "fr")}>
         FR
       </a>
@@ -26,7 +26,7 @@ const LanguageSwitcher = ({ locale }) => {
       <a href="#" onClick={e => onChangeLocale(e, "en")}>
         EN
       </a>
-    </>
+    </div>
   );
 };
 

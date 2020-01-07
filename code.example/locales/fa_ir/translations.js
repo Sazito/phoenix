@@ -1,6 +1,5 @@
 export default {
-  Hello: "سلام!!!",
-  "TEST {{time}}": "تست {{time}} :)",
+  Hello: "سلام",
   Home: "خانه",
   Login: "ورود",
   Dashboard: "داشبورد",
