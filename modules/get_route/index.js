@@ -6,7 +6,7 @@ function removeTrailingSlashes(route) {
   return route.replace(/(https?:\/\/)|(\/)+/g, "$1$2");
 }
 
-function getRoutes(key, params = {}, basePath = "") {
+function getRoutes(key, params = {}, basePath = "", localeCode) {
   if (!key) {
     console.warn("key is not exist");
   }
@@ -20,7 +20,13 @@ function getRoutes(key, params = {}, basePath = "") {
     });
   }
 
-  return removeTrailingSlashes(`/${basePath || env.BASEPATH}${routeAddress}`);
+  const { BASEPATH } = env;
+
+  const route = removeTrailingSlashes(
+    `/${localeCode ? `${localeCode}/` : ``}${basePath ||
+      BASEPATH}${routeAddress}`
+  );
+  return route;
 }
 
 export default getRoutes;

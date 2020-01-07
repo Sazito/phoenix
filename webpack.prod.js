@@ -3,7 +3,7 @@ const codeProdConfig = require('./code/configs/webpack/webpack.prod');
 const merge = require('webpack-merge');
 const DotenvWebpack = require('dotenv-webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plugin');
-const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
+const ExtractCssChunksWithPageDirection = require("extract-css-chunks-webpack-plugin-with-page-direction");
 const RtlCssPlugin = require('rtl-css-transform-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const ReactLoadableSSRAddon = require('react-loadable-ssr-addon');
@@ -17,11 +17,9 @@ const config = {
     new DotenvWebpack({
       path: dotenvPath
     }),
-    new ExtractCssChunks({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "assets/[name]-ltr.[hash].css",
-      chunkFilename: "assets/[name]-ltr.[hash].css"
+    new ExtractCssChunksWithPageDirection({
+      filename: "assets/[name]-[pagedir].[hash].css",
+      chunkFilename: "assets/[name]-[pagedir].[hash].css"
     }),
     new OptimizeCSSAssetsPlugin({}),
     new ReactLoadableSSRAddon({
@@ -57,11 +55,7 @@ const config = {
         use: [
           // extract css
           {
-            loader: ExtractCssChunks.loader,
-            options: {
-              hot: true,
-              reloadAll: true
-            }
+            loader: ExtractCssChunksWithPageDirection.loader
           },
           // css-loader
           {
@@ -84,11 +78,7 @@ const config = {
         use: [
           // extract css
           {
-            loader: ExtractCssChunks.loader,
-            options: {
-              hot: true,
-              reloadAll: true
-            }
+            loader: ExtractCssChunksWithPageDirection.loader
           },
           // css-loader
           {

@@ -18,4 +18,3 @@ export const ENDPOINTS = {
 
 import getEndpoint from "../../../modules/get_endpoint";
 export default getEndpoint;
-

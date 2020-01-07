@@ -5,8 +5,7 @@ import api from "../../../modules/api_wrapper";
 
 function* getUserAction() {
   const id = Math.floor(Math.random() * 10) + 1;
-  const data = yield api
-    .get(endpoints(USER, { id }))
+  const data = yield api.get(endpoints(USER, { id }));
   yield put({
     type: [actionTypes.ACTION_TYPE_USERS_GET_USER_RESULT],
     response: data

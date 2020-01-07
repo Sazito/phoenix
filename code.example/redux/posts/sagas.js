@@ -5,8 +5,7 @@ import api from "../../../modules/api_wrapper";
 
 function* getPostAction() {
   const id = Math.floor(Math.random() * 10) + 1;
-  const data = yield api
-    .get(endpoints(POST, { id }))
+  const data = yield api.get(endpoints(POST, { id }));
   yield put({
     type: [actionTypes.ACTION_POSTS_GET_POST_RESULT],
     response: data

@@ -1,5 +1,5 @@
 const customHeaders = {
-    // 'x-locale': 'en'
-}
+  // 'x-locale': 'en'
+};
 
 export default customHeaders;

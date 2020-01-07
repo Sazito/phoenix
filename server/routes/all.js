@@ -19,6 +19,10 @@ import { createAPI } from "../../modules/api_wrapper";
 import { checkUser } from "../../code/modules/membership";
 import CryptoJS from "crypto-js";
 import { Helmet } from "react-helmet";
+import { createLocale } from "../../modules/localization";
+import { calculateLocale } from "../../modules/localization/check_locale";
+import { REGEXP_LINK_HREF_DIR } from "../../modules/localization/consts.js";
+import { minify } from "html-minifier";
 
 const loadRouteDependencies = (location, store) => {
   // get current components by matching current location against project's routes list
@@ -52,6 +56,12 @@ const all = (req, res) => {
     checkUser
   });
 
+  const localeCode = calculateLocale(req);
+
+  const locale = createLocale({ localeCode });
+  const dir = locale.getDirection();
+  const lang = locale.getLanguage();
+
   theUser.getUser().then(user => {
     // we need to start sagas outside the Redux middleware environment
     // because of running necessary sagas for pre-fetching data for server side rendering on server app
@@ -76,6 +86,7 @@ const all = (req, res) => {
                 <App
                   user={user && user.status === 200 && user.data}
                   userContext={theUser && theUser}
+                  locale={locale}
                 />
               </StaticRouter>
             </Provider>
@@ -105,12 +116,16 @@ const all = (req, res) => {
 
           let styles = "";
           (bundles.css || []).map(style => {
-            styles += `<link href="${style.publicPath}" rel="stylesheet" />`;
+            const href = style.publicPath.replace(
+              REGEXP_LINK_HREF_DIR,
+              `-${dir}`
+            );
+            styles += `<link href="${href}" rel="stylesheet" />`;
           });
 
           let scripts = "";
           (bundles.js || []).map(script => {
-            scripts += `<script charset="utf-8" src="${script.publicPath}"></script>`;
+            scripts += `<script src="${script.publicPath}"></script>`;
           });
 
           let inlineScripts = "";
@@ -134,16 +149,40 @@ const all = (req, res) => {
           const helmet = Helmet.renderStatic();
           const helmetData = helmet.title.toString() + helmet.meta.toString();
 
-          // sending prepared data, chunks and redux initial states to the client
-          return res.send(
-            indexData
-              .replace("</head>", `${styles}${scripts}</head>`)
-              .replace("<title></title>", `${helmetData}`)
-              .replace(
-                '<div id="root"></div>',
-                `<div id="root">${app}</div>${inlineScripts}`
-              )
+          let transformedIndexData = indexData.replace(
+            REGEXP_LINK_HREF_DIR,
+            `-${dir}`
           );
+
+          transformedIndexData = transformedIndexData
+            .replace("<html>", `<html lang="${lang}" dir="${dir}">`)
+            .replace("</head>", `${styles}${scripts}</head>`)
+            .replace("<title></title>", `${helmetData}`)
+            .replace(
+              '<div id="root"></div>',
+              `<div id="root">${app}</div>${inlineScripts}`
+            );
+
+          transformedIndexData = minify(transformedIndexData, {
+            removeStyleLinkTypeAttributes: true,
+            collapseInlineTagWhitespace: true,
+            removeScriptTypeAttributes: true,
+            processConditionalComments: true,
+            collapseBooleanAttributes: true,
+            removeRedundantAttributes: true,
+            removeAttributeQuotes: true,
+            removeEmptyAttributes: true,
+            removeTagWhitespace: true,
+            removeOptionalTags: true,
+            collapseWhitespace: true,
+            decodeEntities: true,
+            removeComments: true,
+            minifyCSS: true,
+            minifyJS: true
+          });
+
+          // sending prepared data, chunks and redux initial states to the client
+          return res.send(transformedIndexData);
         });
       })
       .catch(error => {
