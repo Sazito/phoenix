@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+import Helmet from "react-helmet";
 import { connect } from "react-redux";
 import Logo from "../../components/logo";
 import { pHome } from "./home_page.scss";
 import { getPost } from "../../redux/posts/actions";
 import { env } from "../../configs";
 import Loading from "../../components/loading";
+import { withLocale } from "../../../modules/localization";
 
 const mapStateToProps = state => {
   return {
@@ -22,20 +24,24 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const HomePage = ({ onGetPost, isFetched, isLoading, post }) => {
+const HomePage = ({ onGetPost, isFetched, isLoading, post, locale }) => {
   useEffect(() => {
     !isFetched && onGetPost();
   }, []);
 
+  const { __ } = locale;
+
   return (
     <>
+      <Helmet>
+        <title>{env.APP_NAME}</title>
+      </Helmet>
       {isLoading && <Loading />}
       <div className={pHome}>
         {!isLoading && post && (
           <div>
             <Logo />
-            <div>Welcome to {env.APP_NAME}</div>
-            <div>{post.title}</div>
+            <div>{__("Hello")}</div>
           </div>
         )}
       </div>
@@ -48,4 +54,4 @@ const HomePageWrapper = connect(
   mapDispatchToProps
 )(HomePage);
 
-export default HomePageWrapper;
+export default withLocale(HomePageWrapper);

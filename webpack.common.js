@@ -25,8 +25,9 @@ const env = dotenv.config({
 module.exports = {
   entry: './client/index.js',
   output: {
-    filename: 'assets/main.[contentHash].js',
-    chunkFilename: 'assets/[name].[contentHash].js',
+    filename: isProduction ? 'assets/main.[contentHash].js' : 'assets/main.js',
+    chunkFilename: 
+    isProduction ? 'assets/[name].[contentHash].js' : 'assets/[name].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },

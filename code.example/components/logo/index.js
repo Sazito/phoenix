@@ -6,7 +6,12 @@ import { env } from "../../configs";
 const Logo = () => {
   return (
     <div className={style.cLogo}>
-      <img className={style.cLogoImage} src={logo} alt={env.APP_NAME} />
+      <img
+        width={120}
+        className={style.cLogoImage}
+        src={logo}
+        alt={env.APP_NAME}
+      />
     </div>
   );
 };

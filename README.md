@@ -54,7 +54,7 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **Amir Hossein Ahmadi** - *Developer* - [amirhossein693](https://github.com/amirhossein693)
+* **Amirhossein Ahmadi** - *Developer* - [amirhossein693](https://github.com/amirhossein693)
 
 * **Ahmad Reza Mohammadi** - *Developer* - [ARMy4D](https://github.com/ARMy4D)
 
