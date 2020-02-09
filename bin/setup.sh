@@ -66,10 +66,17 @@ then
 else
     printf "Installing Packages\n"
     yarn
+fi
+
+if [ -d "${CODE_DIR}/node_modules" ]
+then
+    printf "Directory \"${CODE_DIR}/node_modules\" already exists.\n"
+    printf "If you want reinstall packages, you can use \"yarn\" command.\n"
+else
     printf "Installing \"${CODE_DIR}\" Packages\n"
     cd ${CODE_DIR}
     yarn
-    cd ..
+    cd ../
 fi
 
 printf "\n"
