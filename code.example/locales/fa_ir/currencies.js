@@ -1,10 +1,12 @@
+import { toEnglishNumber } from "../default/utils";
+
 export default {
   IRR: {
     currencyUnit: "IRR",
     currencyGlyph: "﷼",
     format: " {{num}} {{glyph}}",
     calc(num) {
-      return num;
+      return toEnglishNumber(num);
     }
   },
   USD: {
@@ -12,7 +14,7 @@ export default {
     currencyGlyph: "$",
     format: " {{num}} {{glyph}} {{unit}}",
     calc(num) {
-      return num;
+      return toEnglishNumber(num);
     }
   }
 };

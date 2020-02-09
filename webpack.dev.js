@@ -16,7 +16,8 @@ proxyList.map(record => {
   proxy[record.path] = {
     target: record.target,
     changeOrigin: true,
-    pathRewrite: { [`^${record.path}`]: "" }
+    pathRewrite: { [`^${record.path}`]: "" },
+    logLevel: 'debug'
   };
 });
 
