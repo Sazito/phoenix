@@ -1,8 +1,7 @@
 import fetch from "isomorphic-fetch";
 import { env, customHeaders } from "../../code/configs";
 
-// let instance = null;
-const methods = ["post", "get", "put", "delete", "update"];
+const methods = ["post", "get", "put", "delete", "update", "patch"];
 const api = {};
 
 const APICreator = ({ method, token }) => {

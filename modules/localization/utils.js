@@ -12,10 +12,6 @@ export const detectLocaleFromUrlPath = ({ urlPath }) => {
 };
 
 export const getLocaleConfig = code => {
-  // console.log({
-  //   code,
-  //   localeMaps
-  // });
   return {
     ...common,
     ...localeMaps[code]

@@ -34,7 +34,8 @@ export const changeLocale = ({ locale, history }) => {
     html.lang = lang;
     (links || []).forEach(link => {
       const newLink = link.cloneNode(true);
-      const currentDir = link.href.match(REGEXP_LINK_HREF_DIR)[0];
+      const targetLinks = link.href.match(REGEXP_LINK_HREF_DIR);
+      const currentDir = targetLinks && targetLinks.length && targetLinks[0];
       const newDir = `-${dir}`;
       if (currentDir !== newDir) {
         const newLinkHref = link.href.replace(REGEXP_LINK_HREF_DIR, newDir);

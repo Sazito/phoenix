@@ -87,7 +87,7 @@ const createLocale = ({ localeCode, urlPath }) => {
           unit: useUnit ? currencyUnit : ""
         },
         locale
-      );
+      ).trim();
     },
     getRoutes: (key, params) => {
       return getRoutes(
