@@ -40,9 +40,13 @@ export const changeLocale = ({ locale, history }) => {
       if (currentDir !== newDir) {
         const newLinkHref = link.href.replace(REGEXP_LINK_HREF_DIR, newDir);
         newLink.href = newLinkHref;
-        newLink.addEventListener('load', function () {
-          head.removeChild(link);
-        }, false);
+        newLink.addEventListener(
+          "load",
+          function() {
+            head.removeChild(link);
+          },
+          false
+        );
         head.appendChild(newLink);
       }
     });
