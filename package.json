@@ -6,6 +6,7 @@
   "author": "amirhossein693@gmail.com",
   "license": "MIT",
   "scripts": {
+    "reset": "./bin/reset.sh",
     "setup": "./bin/setup.sh",
     "build:prod": "NODE_ENV=production webpack --config webpack.prod.js",
     "build:server": "NODE_ENV=production webpack --config webpack.server.js",
