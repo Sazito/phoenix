@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const codeServerConfig = require('./code/configs/webpack/webpack.server');
 const nodeExternals = require('webpack-node-externals');
 const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plugin');
+const basePath = require('./modules/utils/webpack/base_path');
 
 const config = {
   mode: 'production',
@@ -91,7 +92,7 @@ const config = {
             loader: 'file-loader',
             options: {
               outputPath: '../dist/assets',
-              publicPath: '/assets'
+              publicPath: basePath
             }
           }
         ]
@@ -103,7 +104,7 @@ const config = {
             loader: 'file-loader',
             options: {
               outputPath: '../dist/assets',
-              publicPath: '/assets'
+              publicPath: basePath
             }
           }
         ]
