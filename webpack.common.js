@@ -3,6 +3,7 @@ const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
 const dotenvPath = isProduction ? './.env' : './.env.development';
+const publicPath = require('./modules/utils/webpack/public_path');
 try {
   if (fs.existsSync(path.resolve(__dirname, dotenvPath))) {
     console.log(`${dotenvPath} loaded`)
@@ -29,13 +30,16 @@ module.exports = {
     chunkFilename: 
     isProduction ? 'assets/[name].[contentHash].js' : 'assets/[name].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath
   },
   devServer: {
     port: env.PORT,
-    historyApiFallback: true,
+    historyApiFallback: {
+      index: publicPath
+    },
     compress: true,
-    open: true
+    open: true,
+    publicPath
   },
   plugins: [
     new HtmlWebpackPlugin({
