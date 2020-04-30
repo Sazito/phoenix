@@ -11,10 +11,10 @@ const assets = (req, res) => {
   try {
     filePath = decodeURIComponent(filePath);
   } catch (err) {
-    return res.status(400).send(new Error("invalid url"));
+    return res.status(403).send(new Error("invalid url"));
   }
   if (~filePath.indexOf("\0")) {
-    return res.status(401).send(new Error("null byte attack dedected!!"));
+    return res.status(403).send(new Error("null byte attack dedected!!"));
   }
   if (UP_PATH_REGEXP.test(filePath)) {
     return res.status(403).send(new Error("LFI attack dedected!!!"));
