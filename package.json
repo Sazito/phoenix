@@ -8,12 +8,12 @@
   "scripts": {
     "reset": "./bin/reset.sh",
     "setup": "./bin/setup.sh",
-    "build:prod": "NODE_ENV=production webpack --config webpack.prod.js",
-    "build:server": "NODE_ENV=production webpack --config webpack.server.js",
+    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config webpack.server.js",
     "build": "yarn run build:prod && yarn run build:server",
-    "start:prod": "NODE_ENV=production webpack-dev-server --config webpack.prod.js",
-    "start:dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js",
-    "start:server": "DEBUG_MODE=true NODE_ENV=production node -r dotenv/config ./build/index.js",
+    "start:prod": "cross-env NODE_ENV=production webpack-dev-server --config webpack.prod.js",
+    "start:dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js",
+    "start:server": "DEBUG_MODE=true cross-env NODE_ENV=production node -r dotenv/config ./build/index.js",
     "test": "jest"
   },
   "dependencies": {
