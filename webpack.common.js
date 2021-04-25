@@ -51,7 +51,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.js$/,
+        test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
         use: [
           {
@@ -59,6 +59,7 @@ module.exports = {
             options: {
               cacheDirectory: true,
               presets: [
+                "@babel/preset-typescript",
                 [
                   "@babel/preset-env",
                   {
@@ -100,5 +101,9 @@ module.exports = {
         ]
       }
     ]
+  },
+  resolve: {
+    // Enable webpack find ts and tsx files without an extension
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
   }
 };
