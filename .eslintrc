@@ -12,6 +12,11 @@
     "jsx-a11y",
     "jest"
   ],
+  "settings": {
+    "react": {
+      "version": "^16.8.6"
+    }
+  },
   "rules": {
     "react/prop-types": 0,
     "react/display-name": 0,
