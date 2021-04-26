@@ -11,7 +11,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const dotenvPath = isProduction ? './.env' : './.env.development';
 
 const config = {
-  mode: 'production',
+  mode: process.env.NODE_ENV,
   plugins: [
     new CleanWebpackPlugin(),
     new DotenvWebpack({
@@ -45,8 +45,9 @@ const config = {
     }
   },
   module: {
-    rules: [{
-        test: /.js$/,
+    rules: [
+      {
+        test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
         use: ['prettier-loader']
       },

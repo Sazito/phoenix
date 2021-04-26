@@ -24,7 +24,7 @@ const filterProps = (props = {}, options = {}) => {
   }
 
   if (exclude) {
-    exclude.forEach(function(value) {
+    exclude.forEach(function (value) {
       excludeHash[value] = true;
     });
   }
@@ -32,12 +32,12 @@ const filterProps = (props = {}, options = {}) => {
   const hasInclude = include && include.length > 0;
 
   if (hasInclude) {
-    include.forEach(function(value) {
+    include.forEach(function (value) {
       includeHash[value] = true;
     });
   }
 
-  Object.keys(props).forEach(function(key) {
+  Object.keys(props).forEach(function (key) {
     if (
       (hasInclude && includeHash[key]) ||
       (!hasInclude && !excludeHash[key])

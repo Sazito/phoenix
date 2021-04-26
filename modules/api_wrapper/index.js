@@ -19,8 +19,8 @@ const APICreator = ({ method, token }) => {
     }
 
     return fetch(url, options)
-      .then(response => {
-        return response.json().then(data => {
+      .then((response) => {
+        return response.json().then((data) => {
           return {
             status: response.status,
             statusText: response.statusText,
@@ -28,7 +28,7 @@ const APICreator = ({ method, token }) => {
           };
         });
       })
-      .catch(error => error);
+      .catch((error) => error);
   };
 };
 

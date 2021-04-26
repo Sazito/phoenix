@@ -4,7 +4,7 @@ import proxyList from "../../code/configs/proxy";
 
 const app = express();
 
-proxyList.map(record => {
+proxyList.map((record) => {
   const apiProxy = proxy(record.path, {
     target: record.target,
     changeOrigin: true,

@@ -7,7 +7,7 @@ import WithSubRouters from "./with_subrouters";
 import WithLayout from "./with_layout";
 import WithACL from "./with_acl";
 
-const RouteFactory = props => {
+const RouteFactory = (props) => {
   const { routes } = props;
   const routerProps = filterProps(props, { include: ["exact", "path"] });
   const layoutProps = filterProps(props, { include: ["layout"] });
@@ -18,7 +18,7 @@ const RouteFactory = props => {
   const { component: Component } = props;
   let render;
   if (isNill(routes)) {
-    render = prop => (
+    render = (prop) => (
       <WithACL {...aclProps}>
         <WithLayout {...layoutProps}>
           {Component && <Component {...prop} {...componentProps} />}
@@ -27,11 +27,11 @@ const RouteFactory = props => {
     );
   }
   if (isArray(routes)) {
-    const calculatedRoutes = routes.map(route => ({
+    const calculatedRoutes = routes.map((route) => ({
       ...route,
       path: route.path
     }));
-    render = prop => (
+    render = (prop) => (
       <WithACL {...aclProps}>
         <WithLayout {...layoutProps}>
           <WithSubRouters routes={calculatedRoutes}>

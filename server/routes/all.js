@@ -62,7 +62,7 @@ const all = (req, res) => {
   const dir = locale.getDirection();
   const lang = locale.getLanguage();
 
-  theUser.getUser().then(user => {
+  theUser.getUser().then((user) => {
     // we need to start sagas outside the Redux middleware environment
     // because of running necessary sagas for pre-fetching data for server side rendering on server app
     store
@@ -80,7 +80,7 @@ const all = (req, res) => {
         const initState = store.getState();
 
         const app = ReactDOMServer.renderToString(
-          <Loadable.Capture report={moduleName => modules.add(moduleName)}>
+          <Loadable.Capture report={(moduleName) => modules.add(moduleName)}>
             <Provider store={store}>
               <StaticRouter location={req.url} context={context}>
                 <App
@@ -115,7 +115,7 @@ const all = (req, res) => {
           }
 
           let styles = "";
-          (bundles.css || []).map(style => {
+          (bundles.css || []).map((style) => {
             const href = style.publicPath.replace(
               REGEXP_LINK_HREF_DIR,
               `-${dir}`
@@ -124,7 +124,7 @@ const all = (req, res) => {
           });
 
           let scripts = "";
-          (bundles.js || []).map(script => {
+          (bundles.js || []).map((script) => {
             scripts += `<script src="${script.publicPath}"></script>`;
           });
 
@@ -185,7 +185,7 @@ const all = (req, res) => {
           return res.send(transformedIndexData);
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
     store.close();

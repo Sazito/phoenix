@@ -19,7 +19,7 @@ const morganLogFormat = process.env.DEBUG_MODE ? "combined" : "tiny";
 
 app.use(
   morgan(morganLogFormat, {
-    skip: function(req, res) {
+    skip: function (req, res) {
       return res.statusCode < 400;
     },
     stream: process.stderr
@@ -28,7 +28,7 @@ app.use(
 
 app.use(
   morgan(morganLogFormat, {
-    skip: function(req, res) {
+    skip: function (req, res) {
       return res.statusCode >= 400;
     },
     stream: process.stdout

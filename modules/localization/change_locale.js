@@ -32,7 +32,7 @@ export const changeLocale = ({ locale, history }) => {
     const links = document.getElementsByTagName("link");
     html.dir = dir;
     html.lang = lang;
-    (links || []).forEach(link => {
+    (links || []).forEach((link) => {
       const newLink = link.cloneNode(true);
       const targetLinks = link.href.match(REGEXP_LINK_HREF_DIR);
       const currentDir = targetLinks && targetLinks.length && targetLinks[0];
@@ -42,7 +42,7 @@ export const changeLocale = ({ locale, history }) => {
         newLink.href = newLinkHref;
         newLink.addEventListener(
           "load",
-          function() {
+          function () {
             head.removeChild(link);
           },
           false
