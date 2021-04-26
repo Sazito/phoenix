@@ -6119,15 +6119,15 @@ ignore-walk@^3.0.1:
   dependencies:
     minimatch "^3.0.4"
 
-ignore@^3.3.7:
-  version "3.3.10"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.10.tgz#0a97fb876986e8081c631160f8f9f389157f0043"
-  integrity sha512-Pgs951kaMm5GXP7MOvxERINe3gsaVjUWFm+UZPSq9xYriQAksyhg0csnS0KXSNRD5NmNdapXEpjxG49+AKh/ug==
-
 ignore@^4.0.3, ignore@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
+
+ignore@^5.1.4:
+  version "5.1.8"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.8.tgz#f150a8b50a34289b33e22f5889abd4d8016f0e57"
+  integrity sha512-BMpfD7PpiETpBl/A6S498BaIJ6Y/ABT93ETbby2fP00v4EbvPBXWEoaR1UBPKs3iR53pJY7EtZk5KACI57i1Uw==
 
 image-size@~0.5.0:
   version "0.5.5"
@@ -9299,18 +9299,18 @@ prepend-http@^1.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
-prettier-loader@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/prettier-loader/-/prettier-loader-2.1.1.tgz#fc4a211cb0850a815c4903b79fd52d37ff792d1d"
-  integrity sha512-/i+LZT4hjp7wj/eLw72qIuMd/JIstljwzuXkz7HgkKBxOtjKtsCo2YEA5688dgcflD1MAsDBgEgmxxgJ0WQqWQ==
+prettier-loader@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/prettier-loader/-/prettier-loader-3.3.0.tgz#c1a91564a92f099c8210fd291fb7efc6180fd465"
+  integrity sha512-OhGQnvcAiiJ3i5StsgFCRnJ3tb4s5PGCAb/lVga9tMkBRTCK51oTZ1aCrYN7n4YrVbQRxs6/cgaQx5mgESafNg==
   dependencies:
-    ignore "^3.3.7"
-    loader-utils "^1.1.0"
+    ignore "^5.1.4"
+    loader-utils "^1.2.3"
 
-prettier@^1.17.0:
-  version "1.18.2"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.18.2.tgz#6823e7c5900017b4bd3acf46fe9ac4b4d7bda9ea"
-  integrity sha512-OeHeMc0JhFE9idD4ZdtNibzY0+TPHSpSSb9h8FqtP+YnoZZ1sl8Vc9b1sasjfymH3SonAF4QcA2+mzHPhMvIiw==
+prettier@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
+  integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
 
 pretty-error@^2.0.2:
   version "2.1.1"

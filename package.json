@@ -13,7 +13,7 @@
     "build": "yarn run build:prod && yarn run build:server",
     "start:prod": "NODE_ENV=production webpack-dev-server --config webpack.prod.js",
     "start:dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js",
-    "start:server": "DEBUG_MODE=true NODE_ENV=production node -r dotenv/config ./build/index.js",
+    "start:server": "NODE_ENV=production node -r dotenv/config ./build/index.js",
     "test": "jest"
   },
   "dependencies": {
@@ -71,8 +71,8 @@
     "lerna": "^3.13.2",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "prettier": "^1.17.0",
-    "prettier-loader": "^2.1.1",
+    "prettier": "^2.2.1",
+    "prettier-loader": "^3.3.0",
     "react-test-renderer": "^16.8.6",
     "rtl-css-transform-webpack-plugin": "^1.0.6",
     "sass-loader": "^7.1.0",

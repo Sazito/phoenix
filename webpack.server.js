@@ -4,9 +4,10 @@ const codeServerConfig = require('./code/configs/webpack/webpack.server');
 const nodeExternals = require('webpack-node-externals');
 const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plugin');
 const basePath = require('./modules/utils/webpack/base_path');
+const isProduction = process.env.NODE_ENV === 'production';
 
 const config = {
-  mode: 'production',
+  mode: process.env.NODE_ENV,
   entry: './server/index.js',
   target: 'node',
   externals: [nodeExternals(), "react-helmet"],
@@ -21,13 +22,22 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|ts)x?$/,
         use: [
           {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
               presets: [
+                "@babel/preset-typescript",
+                [
+                  "@babel/preset-env",
+                  {
+                    "targets": {
+                      "node": "current"
+                    }
+                  }
+                ],
                 "@babel/preset-react"
               ],
               plugins: [
@@ -112,5 +122,9 @@ const config = {
     ]
   }
 };
+
+if (!isProduction) {
+  config.devtool = 'inline-source-map';
+}
 
 module.exports = merge.smart(config, codeServerConfig);
