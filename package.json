@@ -76,7 +76,7 @@
     "react-test-renderer": "^16.8.6",
     "rtl-css-transform-webpack-plugin": "^1.0.6",
     "sass-loader": "^7.1.0",
-    "serialize-javascript": "^1.6.1",
+    "serialize-javascript": "^3.1.0",
     "style-loader": "^0.23.1",
     "typescript": "^4.2.4",
     "webpack": "^4.44.1",
