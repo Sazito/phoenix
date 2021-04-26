@@ -8,12 +8,15 @@
   "scripts": {
     "reset": "./bin/reset.sh",
     "setup": "./bin/setup.sh",
-    "build:prod": "NODE_ENV=production webpack --config webpack.prod.js",
-    "build:server": "NODE_ENV=production webpack --config webpack.server.js",
-    "build": "yarn run build:prod && yarn run build:server",
+    "build:prod": "webpack --config webpack.prod.js",
+    "build:server": "webpack --config webpack.server.js",
+    "build": "NODE_ENV=production yarn build:prod && NODE_ENV=production yarn build:server",
+    "build:dev": "NODE_ENV=development yarn build:prod && NODE_ENV=development yarn build:server",
     "start:prod": "NODE_ENV=production webpack-dev-server --config webpack.prod.js",
     "start:dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js",
     "start:server": "NODE_ENV=production node -r dotenv/config ./build/index.js",
+    "start:server:dev": "NODE_ENV=development node -r dotenv/config ./build/index.js",
+    "watch:server:dev": "nodemon --exec \"yarn build:dev && yarn start:server:dev\" --watch server --watch code ",
     "test": "jest"
   },
   "dependencies": {
@@ -70,6 +73,7 @@
     "jest": "^24.7.1",
     "lerna": "^3.13.2",
     "node-sass": "^4.11.0",
+    "nodemon": "^2.0.7",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "prettier": "^2.2.1",
     "prettier-loader": "^3.3.0",
