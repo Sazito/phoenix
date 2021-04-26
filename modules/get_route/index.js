@@ -14,7 +14,7 @@ function getRoutes(key, params = {}, basePath = "", localeCode) {
   let routeAddress = ROUTES[key];
 
   if (params && Object.keys(params).length) {
-    Object.keys(params).map(param => {
+    Object.keys(params).map((param) => {
       routeAddress = routeAddress.replace(`:${param}`, params[param]);
       return param;
     });
@@ -23,8 +23,9 @@ function getRoutes(key, params = {}, basePath = "", localeCode) {
   const { BASEPATH } = env;
 
   const route = removeTrailingSlashes(
-    `/${localeCode ? `${localeCode}/` : ``}${basePath ||
-      BASEPATH}${routeAddress}`
+    `/${localeCode ? `${localeCode}/` : ``}${
+      basePath || BASEPATH
+    }${routeAddress}`
   );
   return route;
 }

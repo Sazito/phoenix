@@ -20,7 +20,7 @@ const App = ({ user, userContext, history, locale }) => {
     <LocaleContext.Provider
       value={{
         locale: theLocale,
-        changeLocale: localeCode => {
+        changeLocale: (localeCode) => {
           const newLocale = createLocale({ localeCode });
           changeLocale({ locale: newLocale, history });
           setLocale(newLocale);

@@ -1,11 +1,11 @@
 import { env } from "../../code/configs";
 import { REGEXP_LOCALE_AND_COUNTRY_CODE, REGEXP_LOCALE_CODE } from "./consts";
 
-export const calculateLocale = req => {
+export const calculateLocale = (req) => {
   return req ? calculateLocaleOnServer(req) : calculateLocaleOnClient();
 };
 
-export const checkParts = url => {
+export const checkParts = (url) => {
   let localeCode = "";
   let urlParts;
   if (env.BASEPATH !== "") {
@@ -17,7 +17,7 @@ export const checkParts = url => {
     localeCode = urlParts.replace(/\//g, "").toLowerCase();
   } else if (url) {
     urlParts = url.split("/");
-    urlParts = urlParts.filter(record => record !== "");
+    urlParts = urlParts.filter((record) => record !== "");
     let urlFirstPart =
       typeof urlParts === "object" && urlParts.length > 0 && urlParts[0];
 
@@ -46,7 +46,7 @@ export const calculateLocaleOnClient = () => {
   return localeCode;
 };
 
-export const calculateLocaleOnServer = req => {
+export const calculateLocaleOnServer = (req) => {
   let localeCode = "";
   if (req) {
     const url = req.originalUrl;

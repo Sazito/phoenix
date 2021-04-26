@@ -8,7 +8,7 @@ function getEndpoint(key, params = {}) {
   let routeAddress = ENDPOINTS[key];
 
   if (params && Object.keys(params).length) {
-    Object.keys(params).map(param => {
+    Object.keys(params).map((param) => {
       routeAddress = routeAddress.replace(`:${param}`, params[param]);
       return param;
     });

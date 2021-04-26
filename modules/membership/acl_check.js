@@ -1,7 +1,7 @@
 import { getRole, getRoleConfigs } from "../../code/consts/acl/roles";
 
 const hasPermission = (permissions, roleConfigs) => {
-  return permissions.find(permission => {
+  return permissions.find((permission) => {
     return (roleConfigs.permissions || []).indexOf(permission) >= 0;
   });
 };

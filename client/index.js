@@ -50,7 +50,7 @@ store.runSaga(rootSaga);
 // because using ReactDom.hydrate generates a different DOM from what we produced in our SSR,
 // thus react gives us a warning because of that.
 const renderMethod = isProduction ? ReactDOM.hydrate : ReactDOM.render;
-theUser.getUser().then(user => {
+theUser.getUser().then((user) => {
   Loadable.preloadReady().then(() => {
     renderMethod(
       <Provider store={store}>

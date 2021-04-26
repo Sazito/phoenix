@@ -11,7 +11,7 @@ export const detectLocaleFromUrlPath = ({ urlPath }) => {
   return locale;
 };
 
-export const getLocaleConfig = code => {
+export const getLocaleConfig = (code) => {
   return {
     ...common,
     ...localeMaps[code]
@@ -32,7 +32,7 @@ export const __ = (query, param, locale) => {
     variables = undefined;
   }
   variables &&
-    variables.map(e => {
+    variables.map((e) => {
       const varName = e.replace(/{{|}}/g, "");
       sentences = sentences.replace(e, param[varName]);
       return true;
