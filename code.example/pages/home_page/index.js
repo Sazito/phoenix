@@ -29,7 +29,7 @@ const HomePage = ({ onGetPost, isFetched, isLoading, post, locale }) => {
     !isFetched && onGetPost();
   }, []);
 
-  const { __ } = locale;
+  const { __, number } = locale;
 
   return (
     <>
@@ -45,6 +45,7 @@ const HomePage = ({ onGetPost, isFetched, isLoading, post, locale }) => {
           </div>
         )}
       </div>
+      <center><small>{__("Version")}: {number("0.8.1")}</small></center>
     </>
   );
 };
