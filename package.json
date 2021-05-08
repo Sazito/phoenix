@@ -16,7 +16,7 @@
     "start:dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js",
     "start:server": "NODE_ENV=production node -r dotenv/config ./build/index.js",
     "start:server:dev": "NODE_ENV=development node -r dotenv/config ./build/index.js",
-    "watch:server:dev": "nodemon --exec \"yarn build:dev && yarn start:server:dev\" --watch server --watch code ",
+    "watch:server:dev": "nodemon --exec \"yarn build:dev && yarn start:server:dev\" --watch server --watch code -e '*'",
     "test": "jest"
   },
   "dependencies": {
