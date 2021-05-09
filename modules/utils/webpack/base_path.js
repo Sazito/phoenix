@@ -6,5 +6,7 @@ const env = dotenv.config({
   path: dotenvPath
 }).parsed;
 
-const basePath = env.BASEPATH !== "" ? `/${env.BASEPATH}/assets` : `/assets`;
+const ASSETS_PATH = env.ASSETS_PATH || 'assets'
+
+const basePath = env.BASEPATH !== "" ? `/${env.BASEPATH}/${ASSETS_PATH}` : `/${ASSETS_PATH}`;
 module.exports = basePath;

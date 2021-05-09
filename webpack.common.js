@@ -23,12 +23,14 @@ const env = dotenv.config({
   path: dotenvPath
 }).parsed;
 
+const ASSETS_PATH = env.ASSETS_PATH || 'assets';
+
 module.exports = {
   entry: './client/index.js',
   output: {
-    filename: isProduction ? 'assets/main.[contentHash].js' : 'assets/main.js',
+    filename: isProduction ? `${ASSETS_PATH}/main.[contentHash].js` : `${ASSETS_PATH}/main.js`,
     chunkFilename: 
-    isProduction ? 'assets/[name].[contentHash].js' : 'assets/[name].js',
+    isProduction ? `${ASSETS_PATH}/[name].[contentHash].js` : `${ASSETS_PATH}/[name].js`,
     path: path.resolve(__dirname, 'dist'),
     publicPath
   },
@@ -84,7 +86,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: './assets'
+              outputPath: `./${ASSETS_PATH}`
             }
           }
         ]
@@ -95,7 +97,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: './assets'
+              outputPath: `./${ASSETS_PATH}`
             }
           }
         ]
