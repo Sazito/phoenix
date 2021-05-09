@@ -11,6 +11,8 @@ const env = dotenv.config({
   path: dotenvPath
 }).parsed;
 
+const ASSETS_PATH = env.ASSETS_PATH || 'assets';
+
 const proxy = {};
 proxyList.map(record => {
   proxy[record.path] = {
@@ -29,11 +31,11 @@ const config = {
       path: dotenvPath
     }),
     new ExtractCssChunksWithPageDirection({
-      filename: "assets/[name]-[pagedir].css",
-      chunkFilename: "assets/[name]-[pagedir].css"
+      filename: `${ASSETS_PATH}/[name]-[pagedir].css`,
+      chunkFilename: `${ASSETS_PATH}/[name]-[pagedir].css`
     }),
     new RtlCssPlugin({
-      filename: 'assets/[name]-rtl.css',
+      filename: `${ASSETS_PATH}/[name]-rtl.css`,
       sourcemap: true
     })
   ],

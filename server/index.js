@@ -11,6 +11,7 @@ import proxy from "./proxy";
 // getting PORT from `.env` file in root directory
 const PORT = process.env.PORT;
 const BASEPATH = process.env.BASEPATH;
+const ASSETS_PATH = process.env.ASSETS_PATH || "assets";
 const app = express();
 
 app.use(cookieParser());
@@ -39,7 +40,8 @@ app.use(
 app.use(express.static("./code/public"));
 
 // handle boilerplate static assets
-const assetsPath = BASEPATH !== "" ? `/${BASEPATH}/assets` : `/assets`;
+const assetsPath =
+  BASEPATH !== "" ? `/${BASEPATH}/${ASSETS_PATH}` : `/${ASSETS_PATH}`;
 app.use(assetsPath, assets);
 
 // handle custom server routes

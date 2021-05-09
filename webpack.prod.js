@@ -9,6 +9,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const ReactLoadableSSRAddon = require('react-loadable-ssr-addon');
 const isProduction = process.env.NODE_ENV === 'production';
 const dotenvPath = isProduction ? './.env' : './.env.development';
+const ASSETS_PATH = process.env.ASSETS_PATH || 'assets'
 
 const config = {
   mode: process.env.NODE_ENV,
@@ -18,15 +19,15 @@ const config = {
       path: dotenvPath
     }),
     new ExtractCssChunksWithPageDirection({
-      filename: "assets/[name]-[pagedir].[hash].css",
-      chunkFilename: "assets/[name]-[pagedir].[hash].css"
+      filename: `${ASSETS_PATH}/[name]-[pagedir].[hash].css`,
+      chunkFilename: `${ASSETS_PATH}/[name]-[pagedir].[hash].css`
     }),
     new OptimizeCSSAssetsPlugin({}),
     new ReactLoadableSSRAddon({
       filename: 'react-loadable.json'
     }),
     new RtlCssPlugin({
-      filename: 'assets/[name]-rtl.[hash].css'
+      filename: `${ASSETS_PATH}/[name]-rtl.[hash].css`
     })
   ],
   optimization: {
@@ -39,7 +40,7 @@ const config = {
         },
         vendors: {
           test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-          filename: 'assets/vendor.[contentHash].js'
+          filename: `${ASSETS_PATH}/vendor.[contentHash].js`
         }
       }
     }
