@@ -6,6 +6,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plug
 const basePath = require('./modules/utils/webpack/base_path');
 const isProduction = process.env.NODE_ENV === 'production';
 
+const ASSETS_PATH = process.env.ASSETS_PATH || 'assets';
+
 const config = {
   mode: process.env.NODE_ENV,
   entry: './server/index.js',
@@ -101,7 +103,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: '../dist/assets',
+              outputPath: `../dist/${ASSETS_PATH}`,
               publicPath: basePath
             }
           }
@@ -113,7 +115,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: '../dist/assets',
+              outputPath: `../dist/${ASSETS_PATH}`,
               publicPath: basePath
             }
           }
