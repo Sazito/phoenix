@@ -18,6 +18,17 @@ try {
   console.error(err);
   process.exit(1);
 }
+
+let view;
+const codeView = path.resolve(__dirname, 'code/view/index.html')
+const phoenixView = path.resolve(__dirname, 'view/index.html')
+if (fs.existsSync(codeView)) {
+  view = codeView;
+  console.log('custom view loaded');
+} else {
+  view = phoenixView;
+}
+
 const dotenv = require('dotenv');
 const env = dotenv.config({
   path: dotenvPath
@@ -45,7 +56,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'view/index.html'),
+      template: view,
       inject: true,
       title: env.APP_NAME
     })
