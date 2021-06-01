@@ -147,7 +147,11 @@ const all = (req, res) => {
             )}</script>`;
           }
           const helmet = Helmet.renderStatic();
-          const helmetData = helmet.title.toString() + helmet.meta.toString();
+          const helmetData =
+            helmet.title.toString() +
+            helmet.meta.toString() +
+            helmet.link.toString() +
+            helmet.script.toString();
 
           let transformedIndexData = indexData.replace(
             REGEXP_LINK_HREF_DIR,
