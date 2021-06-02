@@ -1,6 +1,7 @@
 import React from "react";
 import RouteFactory from "./route_factory";
 import filterProps from "../utils/filter_props";
+import { Switch } from "react-router";
 
 const WithSubRouters = (props) => {
   const { children, routes } = props;
@@ -8,12 +9,12 @@ const WithSubRouters = (props) => {
     exclude: ["children", "routes"]
   });
   return (
-    <>
+    <Switch>
       {children}
       {routes.map((route, index) => (
         <RouteFactory key={index} {...route} {...componentProps} />
       ))}
-    </>
+    </Switch>
   );
 };
 
