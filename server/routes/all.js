@@ -169,7 +169,6 @@ const all = (req, res) => {
 
           transformedIndexData = minify(transformedIndexData, {
             removeStyleLinkTypeAttributes: true,
-            collapseInlineTagWhitespace: true,
             removeScriptTypeAttributes: true,
             processConditionalComments: true,
             collapseBooleanAttributes: true,
