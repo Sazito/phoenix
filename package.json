@@ -72,7 +72,7 @@
     "isomorphic-style-loader": "^5.0.1",
     "jest": "^24.7.1",
     "lerna": "^3.13.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "nodemon": "^2.0.7",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "prettier": "^2.2.1",
