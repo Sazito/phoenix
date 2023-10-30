@@ -5,9 +5,9 @@ const methods = ["post", "get", "put", "delete", "update", "patch"];
 const api = {};
 
 const APICreator = ({ method, token }) => {
-  return (endpoint, body) => {
+  return (endpoint, body, base) => {
     const isAbsolute = endpoint.toLowerCase().startsWith("http");
-    const url = isAbsolute ? endpoint : `${env.APP_API_BASE}${endpoint}`;
+    const url = isAbsolute ? endpoint : `${base || env.APP_API_BASE}${endpoint}`;
     const options = {
       method: method.toUpperCase(),
       body: JSON.stringify(body),
