@@ -7,6 +7,7 @@ const api = {};
 const APICreator = ({ method, token }) => {
   return (endpoint, body, base) => {
     const isAbsolute = endpoint.toLowerCase().startsWith("http");
+    console.log({base, full: `${base || env.APP_API_BASE}${endpoint}`})
     const url = isAbsolute ? endpoint : `${base || env.APP_API_BASE}${endpoint}`;
     const options = {
       method: method.toUpperCase(),
